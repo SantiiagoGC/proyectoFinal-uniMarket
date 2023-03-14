@@ -1,11 +1,9 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import javax.persistence.ElementCollection;
+import lombok.*;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.List;
@@ -14,14 +12,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Getter
+@Setter
 public class Usuario extends Persona implements Serializable {
+    @ManyToMany (mappedBy = "usuarioVentas")
+    private List<Producto> productosVentas;
 
-    @OneToMany(mappedBy = "usuarioVentas")
-    private List<Producto> productosVenta;
+    @ManyToMany(mappedBy = "usuarioFavoritos")
+    private List<Producto> productosFavoritos;
+
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentarios;
-    @OneToMany(mappedBy = "usuarioFavoritos")
-    private List<Producto> favoritosFavoritos;
+
     @OneToMany(mappedBy = "usuario")
     private List<Compra> productosCompra;
 }

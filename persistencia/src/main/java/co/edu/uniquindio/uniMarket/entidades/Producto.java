@@ -16,6 +16,11 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class Producto implements Serializable {
+    @Id
+    @EqualsAndHashCode.Include
+    @Column(nullable = false)
+    private String id;
+
     @Column(nullable = false)
     private boolean estado;
 
@@ -24,11 +29,6 @@ public class Producto implements Serializable {
 
     @Column(nullable = false, length = 100)
     private String nombre;
-
-    @Id
-    @EqualsAndHashCode.Include
-    @Column(nullable = false)
-    private String id;
 
     @Column(nullable = false, length = 200)
     private  String descripcion;
@@ -59,14 +59,23 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     private Integer cantidad;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(nullable = false)
-    private Usuario usuarioVentas;
+    private List<Usuario> usuarioVentas;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(nullable = false)
-    private Usuario usuarioFavoritos;
+    private List<Usuario> usuarioFavoritos;
 
     @OneToMany(mappedBy = "producto")
     private List<Compra> compras;
+
+    @OneToMany(mappedBy = "usuarioFavoritos")
+    private List<Producto> favoritosFavoritos;
+
+    @OneToMany(mappedBy = "usuarioVentas")
+    private List<Producto> productosVenta;
+
+    @ManyToMany(mappedBy = "productosModerador")
+    private List<Producto> productos;
 }
