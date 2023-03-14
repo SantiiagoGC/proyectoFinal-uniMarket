@@ -1,9 +1,6 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,9 +10,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@ToString
+@AllArgsConstructor
 public class Compra implements Serializable {
-
-
     private double precioTotal;
     @Id
     @Column(length = 50)
@@ -30,6 +27,7 @@ public class Compra implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private MetodoPago metodoPago;
-
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private Producto producto;
 }
