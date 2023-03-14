@@ -76,6 +76,7 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "usuarioVentas")
     private List<Producto> productosVenta;
 
-    @ManyToMany(mappedBy = "productosModerador")
-    private List<Producto> productos;
+    @ManyToMany
+    @JoinColumn(nullable = false)
+    private List<Moderador> productosModerador;
 }
