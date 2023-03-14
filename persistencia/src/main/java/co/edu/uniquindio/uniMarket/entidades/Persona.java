@@ -1,16 +1,12 @@
 package co.edu.uniquindio.uniMarket.entidades;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
-
 
 @Getter
 @Setter
@@ -19,7 +15,6 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 public class Persona implements Serializable {
-
     @Id
     @Column(length = 10)
     @EqualsAndHashCode.Include
