@@ -16,14 +16,17 @@ import java.time.LocalDate;
 public class Comentario  implements Serializable {
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(nullable = false)
     private Usuario usuario;
+
     @ManyToOne
     @JoinColumn(nullable = false)
     private Producto producto;
+
     @Column(nullable = false)
     private LocalDate fecha;
 }
