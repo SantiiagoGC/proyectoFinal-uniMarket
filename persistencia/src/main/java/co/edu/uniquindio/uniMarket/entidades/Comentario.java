@@ -16,7 +16,8 @@ import java.time.LocalDate;
 public class Comentario  implements Serializable {
     @Id
     @EqualsAndHashCode.Include
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     @ManyToOne
     @JoinColumn(nullable = false)
     private Usuario usuario;

@@ -15,9 +15,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Compra implements Serializable {
     @Id
-    @Column(length = 50)
     @EqualsAndHashCode.Include
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Positive
     @Column(nullable = false)
@@ -26,6 +26,10 @@ public class Compra implements Serializable {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Usuario usuario;
+
+    @Positive
+    @Column(nullable = false)
+    private int cantidad;
 
     @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;
