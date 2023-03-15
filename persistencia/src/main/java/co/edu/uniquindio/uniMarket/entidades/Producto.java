@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class Producto implements Serializable {
-
     @Id
     @EqualsAndHashCode.Include
     @Column(nullable = false)

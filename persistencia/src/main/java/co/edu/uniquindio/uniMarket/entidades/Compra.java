@@ -16,8 +16,8 @@ import java.io.Serializable;
 public class Compra implements Serializable {
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Positive
     @Column(nullable = false)
