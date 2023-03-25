@@ -3,30 +3,32 @@ package co.edu.uniquindio.uniMarket.entidades;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Comentario  implements Serializable {
+@AllArgsConstructor
+public class Detalle_Compra implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 1000)
-    private String mensaje;
+    @Column(nullable = false)
+    @Positive
+    private Integer unidades;
 
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDate fecha_creacion;
+    @Column(nullable = false)
+    @Positive
+    private Double precio_producto;
 
     @ManyToOne
-    private Usuario usuario;
+    private Compra compra;
 
     @ManyToOne
     private Producto producto;

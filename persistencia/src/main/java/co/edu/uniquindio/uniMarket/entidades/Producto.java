@@ -6,6 +6,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,62 +21,49 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     private String id;
 
-    @Column(nullable = false)
-    private boolean estado;
-
-    @Column(nullable = false)
-    private String rutaImagen;
-
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    @Column(nullable = false, length = 200)
+    @Positive
+    @Column(nullable = false)
+    private Integer unidades;
+
+    @Column(nullable = false, length = 250)
     private  String descripcion;
 
     @Positive
     @Column(nullable = false)
     private Double precio;
 
-    @Positive
     @Column(nullable = false)
-    private boolean disponibilidad;
+    private boolean activo;
+
+    @Column(nullable = false)
+    private LocalDate fecha_creado;
 
     @Future
     @Column(nullable = false)
-    private LocalDate fechaLimite;
+    private LocalDate fecha_limite;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Categoria categoria;
-
-    @OneToMany(mappedBy = "producto")
-    private List<Comentario> comentarios;
-
-    @ElementCollection
-    private List<Double> notas;
-
-    @Positive
-    @Column(nullable = false)
-    private Integer cantidad;
-
-    @ManyToMany
-    @JoinColumn(nullable = false)
-    private List<Usuario> usuarioVentas;
-
-    @ManyToMany
-    @JoinColumn(nullable = false)
-    private List<Usuario> usuarioFavoritos;
+    @ManyToOne
+    private Usuario vendedor;
 
     @OneToMany(mappedBy = "producto")
-    private List<Compra> compras;
+    private List<Comentario> comentarios_producto = new ArrayList<>();
 
-    @OneToMany(mappedBy = "usuarioFavoritos")
-    private List<Producto> favoritosFavoritos;
+    @OneToMany(mappedBy = "producto")
+    @ToString.Exclude
+    private List<Detalle_Compra> detalleCompras_producto = new ArrayList<>();
 
-    @OneToMany(mappedBy = "usuarioVentas")
-    private List<Producto> productosVenta;
+    @OneToMany(mappedBy = "producto")
+    private List<Imagen> imagenes_producto = new ArrayList<>();
 
-    @ManyToMany
-    @JoinColumn(nullable = false)
-    private List<Moderador> productosModerador;
+    @OneToMany(mappedBy = "producto_categorias")
+    private List<Categoria> categoria_producto = new ArrayList<>();
+
+    @OneToMany(mappedBy = "producto")
+    private List<Favorito> favorito_producto = new ArrayList<>();
+
+    @OneToMany(mappedBy = "producto_moderador")
+    private List<Producto_Moderador> moderador_producto = new ArrayList<>();
 }

@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -13,21 +12,16 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Comentario  implements Serializable {
+public class Favorito implements Serializable {
+
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 1000)
-    private String mensaje;
-
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDate fecha_creacion;
+    @ManyToOne
+    private Producto producto;
 
     @ManyToOne
     private Usuario usuario;
-
-    @ManyToOne
-    private Producto producto;
 }

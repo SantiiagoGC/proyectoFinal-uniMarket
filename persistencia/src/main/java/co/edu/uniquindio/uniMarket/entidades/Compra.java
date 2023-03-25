@@ -5,6 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,22 +22,20 @@ public class Compra implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDate fecha_creacion;
+
     @Positive
     @Column(nullable = false)
-    private double precioTotal;
+    private Double valor_total;
+
+    @Column(nullable = false)
+    private String metodoPago;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Usuario usuario;
 
-    @Positive
-    @Column(nullable = false)
-    private int cantidad;
-
-    @Enumerated(EnumType.STRING)
-    private MetodoPago metodoPago;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Producto producto;
+    @OneToMany(mappedBy = "compra")
+    @ToString.Exclude
+    private List<Detalle_Compra> compra = new ArrayList<>();
 }
