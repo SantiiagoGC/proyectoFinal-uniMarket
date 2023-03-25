@@ -7,27 +7,31 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Comentario  implements Serializable {
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Producto_Moderador implements Serializable {
+
     @Id
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(nullable = false, length = 1000)
-    private String mensaje;
+    private String motivo;
 
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDate fecha_creacion;
-
-    @ManyToOne
-    private Usuario usuario;
+    @Column(nullable = false)
+    private LocalDate fecha;
 
     @ManyToOne
-    private Producto producto;
+    private Moderador moderador;
+
+    @ManyToOne
+    private Producto producto_moderador;
+
+    @ManyToOne
+    private Estado estado;
 }

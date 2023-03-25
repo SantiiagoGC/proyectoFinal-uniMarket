@@ -26,12 +26,6 @@ public class Persona implements Serializable {
     @Column(nullable = false, unique = true, length = 120)
     private String email;
 
-    @Column(nullable = false, length = 10)
-    private Integer numTelefono;
-
-    @Column(nullable = false, length = 100)
-    private String direccion;
-
-    @Column(nullable = false, unique = true)
-    private  String contrasenia;
+    @Column(nullable = false)
+    private  String password;
 }
