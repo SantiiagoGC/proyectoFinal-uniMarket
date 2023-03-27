@@ -46,6 +46,7 @@ public class Producto implements Serializable {
     private LocalDate fecha_limite;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Usuario vendedor;
 
     @OneToMany(mappedBy = "producto")
@@ -66,4 +67,14 @@ public class Producto implements Serializable {
 
     @OneToMany(mappedBy = "producto_moderador")
     private List<Producto_Moderador> moderador_producto = new ArrayList<>();
+
+    public Producto(String id, String nombre, Integer unidades, String descripcion, Double precio, boolean activo, Usuario vendedor) {
+        this.id = id;
+        this.nombre = nombre;
+        this.unidades = unidades;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.activo = activo;
+        this.vendedor = vendedor;
+    }
 }
