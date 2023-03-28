@@ -39,34 +39,39 @@ public class Producto implements Serializable {
     private boolean activo;
 
     @Column(nullable = false)
-    private LocalDate fecha_creado;
+    private LocalDate fechaCreado;
 
     @Future
     @Column(nullable = false)
-    private LocalDate fecha_limite;
+    private LocalDate fechaLimite;
 
     @ManyToOne
     @JoinColumn(nullable = false)
     private Usuario vendedor;
 
     @OneToMany(mappedBy = "producto")
-    private List<Comentario> comentarios_producto = new ArrayList<>();
+    @ToString.Exclude
+    private List<Comentario> comentariosProducto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto")
     @ToString.Exclude
-    private List<Detalle_Compra> detalleCompras_producto = new ArrayList<>();
+    private List<Detalle_Compra> detalleComprasProducto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto")
-    private List<Imagen> imagenes_producto = new ArrayList<>();
+    @ToString.Exclude
+    private List<Imagen> imagenesProducto = new ArrayList<>();
 
-    @OneToMany(mappedBy = "producto_categorias")
-    private List<Categoria> categoria_producto = new ArrayList<>();
+    @OneToMany(mappedBy = "productoCategorias")
+    @ToString.Exclude
+    private List<Categoria> categoriaProducto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto")
-    private List<Favorito> favorito_producto = new ArrayList<>();
+    @ToString.Exclude
+    private List<Favorito> favoritoProducto = new ArrayList<>();
 
-    @OneToMany(mappedBy = "producto_moderador")
-    private List<Producto_Moderador> moderador_producto = new ArrayList<>();
+    @OneToMany(mappedBy = "productoModerador")
+    @ToString.Exclude
+    private List<Producto_Moderador> moderadorProducto = new ArrayList<>();
 
     public Producto(String id, String nombre, Integer unidades, String descripcion, Double precio, boolean activo, Usuario vendedor) {
         this.id = id;

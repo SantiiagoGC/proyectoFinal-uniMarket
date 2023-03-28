@@ -20,6 +20,9 @@ public class Persona implements Serializable {
     @EqualsAndHashCode.Include
     private String cedula;
 
+    @Column(nullable = false, unique = true, length = 100)
+    private String nombreUsuario;
+
     @Column(nullable = false, length = 100)
     private String nombre;
 

@@ -26,19 +26,18 @@ public class Usuario extends Persona implements Serializable {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "vendedor")
-    private List<Producto> productos_venta = new ArrayList<>();
+    private List<Producto> productosVenta = new ArrayList<>();
 
     @ToString.Exclude
     @OneToMany(mappedBy = "usuario")
-    private List<Compra> producto_compras = new ArrayList<>();
+    private List<Compra> productoCompras = new ArrayList<>();
 
     @ToString.Exclude
     @OneToMany(mappedBy = "usuario")
-    private List<Favorito>  productos_favoritos = new ArrayList<>();
+    private List<Favorito>  productosFavoritos = new ArrayList<>();
 
-
-    public Usuario(String cedula, String nombre, String email, String password, String direccion, String telefono) {
-        super(cedula, nombre, email, password);
+    public Usuario(String cedula, String nombreUsuario, String nombre, String email, String password, String direccion, String telefono) {
+        super(cedula, nombreUsuario, nombre, email, password);
         this.direccion = direccion;
         this.telefono = telefono;
     }

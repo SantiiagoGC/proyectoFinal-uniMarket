@@ -18,7 +18,7 @@ public class Producto_Moderador implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, length = 1000)
     private String motivo;
@@ -30,7 +30,7 @@ public class Producto_Moderador implements Serializable {
     private Moderador moderador;
 
     @ManyToOne
-    private Producto producto_moderador;
+    private Producto productoModerador;
 
     @ManyToOne
     private Estado estado;

@@ -22,5 +22,5 @@ public class Categoria implements Serializable
     private String nombre;
 
     @ManyToOne
-    private Producto producto_categorias;
+    private Producto productoCategorias;
 }
