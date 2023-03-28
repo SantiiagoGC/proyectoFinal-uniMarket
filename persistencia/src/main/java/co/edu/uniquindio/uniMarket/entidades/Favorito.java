@@ -17,11 +17,13 @@ public class Favorito implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Producto producto;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Usuario usuario;
 }

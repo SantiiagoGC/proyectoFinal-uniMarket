@@ -57,15 +57,19 @@ public class Producto implements Serializable {
     private List<Detalle_Compra> detalleCompras_producto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto")
+    @ToString.Exclude
     private List<Imagen> imagenes_producto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto_categorias")
+    @ToString.Exclude
     private List<Categoria> categoria_producto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto")
+    @ToString.Exclude
     private List<Favorito> favorito_producto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto_moderador")
+    @ToString.Exclude
     private List<Producto_Moderador> moderador_producto = new ArrayList<>();
 
     public Producto(String id, String nombre, Integer unidades, String descripcion, Double precio, boolean activo, Usuario vendedor) {

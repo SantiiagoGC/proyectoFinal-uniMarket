@@ -19,11 +19,12 @@ public class Estado implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, length = 80)
     private String nombre;
 
     @OneToMany(mappedBy = "estado")
+    @ToString.Exclude
     private List<Producto_Moderador> estado_producto;
 }

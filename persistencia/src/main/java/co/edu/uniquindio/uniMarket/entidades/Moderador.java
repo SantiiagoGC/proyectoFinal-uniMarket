@@ -15,8 +15,13 @@ import java.util.List;
 @Getter
 @Setter
 public class Moderador extends Persona implements Serializable {
+
+    @ToString.Exclude
     @OneToMany(mappedBy = "moderador")
     private List<Producto_Moderador> productos_moderador;
 
 
+    public Moderador(String cedula, String nombreUsuario, String nombre, String email, String password) {
+        super(cedula, nombreUsuario, nombre, email, password);
+    }
 }

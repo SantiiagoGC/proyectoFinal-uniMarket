@@ -37,8 +37,8 @@ public class Usuario extends Persona implements Serializable {
     private List<Favorito>  productos_favoritos = new ArrayList<>();
 
 
-    public Usuario(String cedula, String nombre, String email, String password, String direccion, String telefono) {
-        super(cedula, nombre, email, password);
+    public Usuario(String cedula, String nombreUsuario, String nombre, String email, String password, String direccion, String telefono) {
+        super(cedula, nombreUsuario, nombre, email, password);
         this.direccion = direccion;
         this.telefono = telefono;
     }
