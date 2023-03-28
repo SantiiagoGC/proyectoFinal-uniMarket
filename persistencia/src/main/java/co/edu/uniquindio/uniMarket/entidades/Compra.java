@@ -20,14 +20,14 @@ public class Compra implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDate fecha_creacion;
+    private LocalDate fechaCreacion;
 
     @Positive
     @Column(nullable = false)
-    private Double valor_total;
+    private Double valorTotal;
 
     @Column(nullable = false)
     private String metodoPago;
@@ -38,4 +38,12 @@ public class Compra implements Serializable {
     @OneToMany(mappedBy = "compra")
     @ToString.Exclude
     private List<Detalle_Compra> compra = new ArrayList<>();
+
+    public Compra(Integer id, LocalDate fecha_creacion, Double valor_total, String metodoPago, Usuario usuario) {
+        this.id = id;
+        this.fechaCreacion = fecha_creacion;
+        this.valorTotal = valor_total;
+        this.metodoPago = metodoPago;
+        this.usuario = usuario;
+    }
 }

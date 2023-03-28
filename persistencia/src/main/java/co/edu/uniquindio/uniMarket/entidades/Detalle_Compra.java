@@ -12,12 +12,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-@AllArgsConstructor
 public class Detalle_Compra implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false)
     @Positive
@@ -25,11 +24,21 @@ public class Detalle_Compra implements Serializable {
 
     @Column(nullable = false)
     @Positive
-    private Double precio_producto;
+    private Double precioProducto;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Compra compra;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Producto producto;
+
+    public Detalle_Compra(Integer id, Integer unidades, Double precioProducto, Compra compra, Producto producto) {
+        this.id = id;
+        this.unidades = unidades;
+        this.precioProducto = precioProducto;
+        this.compra = compra;
+        this.producto = producto;
+    }
 }

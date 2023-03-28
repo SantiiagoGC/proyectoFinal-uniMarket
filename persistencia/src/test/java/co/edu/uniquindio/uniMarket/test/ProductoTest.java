@@ -12,11 +12,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ProductoTest {
-
     @Autowired
     private ProductoRepo productoRepo;
 
@@ -24,8 +25,8 @@ public class ProductoTest {
     private UsuarioRepo usuarioRepo;
 
     @Test
-    @Sql("classpath:productos.sql")
-    public void registrarTest(){
+    @Sql("classpath:data.sql")
+    public void registrarTest() {
 
         Usuario vendedor = usuarioRepo.findById("1007531125").orElse(null);
 
@@ -36,18 +37,20 @@ public class ProductoTest {
         Assertions.assertNotNull(productoGuardado);
 
     }
+
     @Test
-    @Sql("classpath:productos.sql")
-    public void eliminarTest(){
+    @Sql("classpath:data.sql")
+    public void eliminarTest() {
 
         productoRepo.deleteById("123");
 
         Producto productoBuscado = productoRepo.findById("123").orElse(null);
         Assertions.assertNull(productoBuscado);
     }
+
     @Test
-    @Sql("classpath:productos.sql")
-    public void actualizarTest(){
+    @Sql("classpath:data.sql")
+    public void actualizarTest() {
 
         Producto registrado = productoRepo.findById("123").orElse(null);
         registrado.setPrecio(15.000);
@@ -60,13 +63,33 @@ public class ProductoTest {
     }
 
     @Test
-    @Sql("classpath:productos.sql")
-    public void listarTest(){
+    @Sql("classpath:data.sql")
+    public void listarTest() {
 
-        List<Producto> productosP = productoRepo.findAll();
-        productosP.forEach(p -> System.out.println(p));
+        List<Producto> productos = productoRepo.findAll();
+        productos.forEach(p -> System.out.println(p));
 
         //Assertions.assertEquals(2, productosP.size());
     }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void filtrarNombreTest() {
+        Optional<Producto> producto = productoRepo.findByNombreContains("iphone");
+
+        if (producto.isPresent()) {
+            System.out.println(producto.get());
+        } else {
+            System.out.println("No existe ese producto");
+        }
+    }
+
+    /*@Test
+    @Sql("classpath:data.sql")
+    public void obtenerNombreTest(){
+        String nombre = productoRepo.obtenerNombreVendedor("123");
+        Assertions.assertEquals("Juan Londoño", nombre);
+    }*/
+
 
 }

@@ -17,13 +17,13 @@ public class Comentario  implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, length = 1000)
     private String mensaje;
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDate fecha_creacion;
+    private LocalDate fechaCreacion;
 
     @ManyToOne
     private Usuario usuario;
