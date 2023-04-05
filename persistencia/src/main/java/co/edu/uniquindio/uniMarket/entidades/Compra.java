@@ -17,6 +17,7 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 public class Compra implements Serializable {
+
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +38,7 @@ public class Compra implements Serializable {
 
     @OneToMany(mappedBy = "compra")
     @ToString.Exclude
-    private List<Detalle_Compra> compra = new ArrayList<>();
+    private List<DetalleCompra> compra = new ArrayList<>();
 
     public Compra(Integer id, LocalDate fecha_creacion, Double valor_total, String metodoPago, Usuario usuario) {
         this.id = id;
@@ -46,4 +47,5 @@ public class Compra implements Serializable {
         this.metodoPago = metodoPago;
         this.usuario = usuario;
     }
+
 }

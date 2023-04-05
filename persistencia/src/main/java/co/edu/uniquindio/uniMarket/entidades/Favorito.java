@@ -24,4 +24,5 @@ public class Favorito implements Serializable {
 
     @ManyToOne
     private Usuario usuario;
+
 }

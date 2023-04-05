@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Producto_Moderador implements Serializable {
+public class ProductoModerador implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,4 +34,5 @@ public class Producto_Moderador implements Serializable {
 
     @ManyToOne
     private Estado estado;
+
 }

@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @ToString(callSuper = true)
 public class Usuario extends Persona implements Serializable {
+
     @Column(nullable = false)
     private  String direccion;
 
@@ -41,4 +42,5 @@ public class Usuario extends Persona implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
     }
+
 }
