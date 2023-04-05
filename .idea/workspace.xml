@@ -4,30 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Se unio Juan y Santi, solo un dataset y se crean y unen algunas consultas.">
-      <change afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/dto/ProductoValido.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/dto/UsuarioYProducto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/DetalleCompraRepo.java" afterDir="false" />
+    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Mas consultas JPQL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Compra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Detalle_Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/DetalleCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Estado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Favorito.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Favorito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Imagen.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Imagen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Moderador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Producto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Producto_Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/ProductoModerador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/Detalle_CompraRepo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/ProductoRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/ProductoRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/Producto_ModeradorRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/ProductoModeradorRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/UsuarioRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/UsuarioRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/Detalle_CompraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/DetalleCompraTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/FavoritoTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/ProductoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/ProductoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/UsuarioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/UsuarioTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/test/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +187,7 @@
       <workItem from="1680422186486" duration="51000" />
       <workItem from="1680506751579" duration="971000" />
       <workItem from="1680579847932" duration="9319000" />
-      <workItem from="1680652521221" duration="8967000" />
+      <workItem from="1680652521221" duration="9310000" />
     </task>
     <task id="LOCAL-00001" summary="Todas las clases creadas y relaciones, version 0.2">
       <created>1678774454161</created>
@@ -243,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679978492562</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Mas consultas JPQL">
+      <created>1680664485615</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680664485615</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +242,8 @@
     <MESSAGE value="Todas las clases creadas y relaciones, version 0.3. Listo para parcial." />
     <MESSAGE value="Todas las clases actualizadas y relacionadas, segun el diagrama porporcionado por el profesor, 0 fallos de momento." />
     <MESSAGE value="Se unio Juan y Santi, solo un dataset y se crean y unen algunas consultas." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se unio Juan y Santi, solo un dataset y se crean y unen algunas consultas." />
+    <MESSAGE value="Mas consultas JPQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mas consultas JPQL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

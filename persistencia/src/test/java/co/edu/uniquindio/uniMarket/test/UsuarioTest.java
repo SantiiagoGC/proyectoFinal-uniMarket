@@ -43,9 +43,11 @@ public class UsuarioTest {
     @Sql("classpath:data.sql")
     public void actualizarTest(){
         Usuario guardado = usuarioRepo.findById("1007531125").orElse(null);
+        assert guardado != null;
         guardado.setDireccion("Carrera 4 # 6 - 38");
         usuarioRepo.save(guardado);
         Usuario usuarioBuscado = usuarioRepo.findById("1007531125").orElse(null);
+        assert usuarioBuscado != null;
         Assertions.assertEquals("Carrera 4 # 6 - 38", usuarioBuscado.getDireccion());
     }
 
@@ -53,7 +55,7 @@ public class UsuarioTest {
     @Sql("classpath:data.sql")
     public void listarTest(){
         List<Usuario> usuarios = usuarioRepo.findAll();
-        usuarios.forEach(u -> System.out.println(u));
+        usuarios.forEach(System.out::println);
     }
 
     @Test
