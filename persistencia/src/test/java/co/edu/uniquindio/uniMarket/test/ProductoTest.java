@@ -1,5 +1,7 @@
 package co.edu.uniquindio.uniMarket.test;
 
+import co.edu.uniquindio.uniMarket.dto.ProductoValido;
+import co.edu.uniquindio.uniMarket.entidades.Comentario;
 import co.edu.uniquindio.uniMarket.entidades.Producto;
 import co.edu.uniquindio.uniMarket.entidades.Usuario;
 import co.edu.uniquindio.uniMarket.repositorios.ProductoRepo;
@@ -11,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,6 +85,55 @@ public class ProductoTest {
         } else {
             System.out.println("No existe ese producto");
         }
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void obtenerNombreVendedorTest() {
+        String nombre= productoRepo.obtenerNombreVendedor("123");
+        Assertions.assertEquals("Juan Londoño", nombre);
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void obtenerComentariosProducto1() {
+        List<Comentario> comentarios =  productoRepo.obtenerComentariosProducto1("123");
+        comentarios.forEach(System.out::println);
+        Assertions.assertEquals(2, comentarios.size());
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void obtenerComentariosProducto2() {
+        List<Comentario> comentarios =  productoRepo.obtenerComentariosProducto2("123");
+        comentarios.forEach(System.out::println);
+        Assertions.assertEquals(2, comentarios.size());
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void obtenerComentariosYProductosTest() {
+        List<Object[]> respuesta =  productoRepo.listarProductosYComentarios();
+
+        respuesta.forEach(o -> System.out.println(o[0]+" --- "+o[1]));
+        Assertions.assertEquals(3, respuesta.size());
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void listarProductosValidosTest() {
+        List<Object[]> productos =  productoRepo.listarProductosValidos(LocalDate.now());
+
+        productos.forEach(o -> System.out.println(o[0]+" --- "+o[1]+" --- "+o[2]));
+       // Assertions.assertEquals(3, respuesta.size());
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void listarProductosValidosDTOTest() {
+        List<ProductoValido> productos =  productoRepo.listarProductosValidosDTO(LocalDate.now());
+        productos.forEach(System.out::println);
+        // Assertions.assertEquals(3, respuesta.size());
     }
 
     /*@Test

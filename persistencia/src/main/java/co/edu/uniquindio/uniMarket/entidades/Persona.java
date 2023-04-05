@@ -15,6 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 public class Persona implements Serializable {
+
     @Id
     @Column(length = 10)
     @EqualsAndHashCode.Include
@@ -31,4 +32,5 @@ public class Persona implements Serializable {
 
     @Column(nullable = false)
     private  String password;
+
 }

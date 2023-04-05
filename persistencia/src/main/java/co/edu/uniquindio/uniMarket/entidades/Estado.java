@@ -3,7 +3,6 @@ package co.edu.uniquindio.uniMarket.entidades;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.xml.transform.sax.SAXResult;
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,5 +24,7 @@ public class Estado implements Serializable {
     private String nombre;
 
     @OneToMany(mappedBy = "estado")
-    private List<Producto_Moderador> estadoProducto;
+    @ToString.Exclude
+    private List<ProductoModerador> estadoProducto;
+
 }

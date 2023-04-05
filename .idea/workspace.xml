@@ -4,12 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Todas las clases creadas y relaciones, version 0.2">
+    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Se unio Juan y Santi, solo un dataset y se crean y unen algunas consultas.">
+      <change afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/dto/ProductoValido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/dto/UsuarioYProducto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/DetalleCompraRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Comentario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Compra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Detalle_Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/DetalleCompra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Estado.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Estado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Favorito.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Favorito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Imagen.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Imagen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Moderador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Persona.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Producto_Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/ProductoModerador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/entidades/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/Detalle_CompraRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/ProductoRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/ProductoRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/Producto_ModeradorRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/ProductoModeradorRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/UsuarioRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/uniMarket/repositorios/UsuarioRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/Detalle_CompraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/DetalleCompraTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/FavoritoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/ProductoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/ProductoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/UsuarioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/UsuarioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/test/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/test/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,13 +37,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/persistencia/src/test/java/co/edu/uniquindio/uniMarket/test/UsuarioTest.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,16 +80,82 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "temurin-11",
-    "last_opened_file_path": "C:/Users/santi/Desktop/test/uniquindio/proyecto-asignatura",
+    "last_opened_file_path": "C:/Users/santi/Desktop/uniMarket/uniquindio/proyecto-uniMarket",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "inlay.hints",
     "spring.configuration.checksum": "1f1bfd217d43e35552439bf1377d7130",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.PersistenciaApplication">
+    <configuration name="ProductoTest.listarProductosValidosDTOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="persistencia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.uniMarket.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.uniMarket.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.uniMarket.test.ProductoTest" />
+      <option name="METHOD_NAME" value="listarProductosValidosDTOTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductoTest.listarProductosValidosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="persistencia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.uniMarket.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.uniMarket.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.uniMarket.test.ProductoTest" />
+      <option name="METHOD_NAME" value="listarProductosValidosTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioTest.listarUsuariosComentariosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="persistencia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.uniMarket.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.uniMarket.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.uniMarket.test.UsuarioTest" />
+      <option name="METHOD_NAME" value="listarUsuariosComentariosTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioTest.listarUsuariosProductosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="persistencia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.uniMarket.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.uniMarket.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.uniMarket.test.UsuarioTest" />
+      <option name="METHOD_NAME" value="listarUsuariosProductosTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PersistenciaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="persistencia" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="co.edu.uniquindio.uniMarket.PersistenciaApplication" />
@@ -85,6 +172,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.PersistenciaApplication" />
+        <item itemvalue="JUnit.UsuarioTest.listarUsuariosProductosTest" />
+        <item itemvalue="JUnit.ProductoTest.listarProductosValidosDTOTest" />
+        <item itemvalue="JUnit.ProductoTest.listarProductosValidosTest" />
+        <item itemvalue="JUnit.UsuarioTest.listarUsuariosComentariosTest" />
       </list>
     </recent_temporary>
   </component>
@@ -102,7 +193,20 @@
       <workItem from="1678756691526" duration="11518000" />
       <workItem from="1678769806746" duration="4817000" />
       <workItem from="1678795321010" duration="343000" />
-      <workItem from="1678825635305" duration="8009000" />
+      <workItem from="1678825635305" duration="8289000" />
+      <workItem from="1678885552597" duration="624000" />
+      <workItem from="1678975774293" duration="1267000" />
+      <workItem from="1679103080059" duration="63000" />
+      <workItem from="1679727007020" duration="5000000" />
+      <workItem from="1679769028938" duration="6670000" />
+      <workItem from="1679866220523" duration="4339000" />
+      <workItem from="1679929273033" duration="4990000" />
+      <workItem from="1679969803930" duration="12116000" />
+      <workItem from="1680144275582" duration="761000" />
+      <workItem from="1680422186486" duration="51000" />
+      <workItem from="1680506751579" duration="971000" />
+      <workItem from="1680579847932" duration="9319000" />
+      <workItem from="1680652521221" duration="8967000" />
     </task>
     <task id="LOCAL-00001" summary="Todas las clases creadas y relaciones, version 0.2">
       <created>1678774454161</created>
@@ -118,7 +222,28 @@
       <option name="project" value="LOCAL" />
       <updated>1678774549789</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Todas las clases creadas y relaciones, version 0.3. Listo para parcial.">
+      <created>1678848927663</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678848927663</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Todas las clases actualizadas y relacionadas, segun el diagrama porporcionado por el profesor, 0 fallos de momento.">
+      <created>1679779763442</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679779763442</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Se unio Juan y Santi, solo un dataset y se crean y unen algunas consultas.">
+      <created>1679978492562</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679978492562</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +251,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Todas las clases creadas y relaciones, version 0.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Todas las clases creadas y relaciones, version 0.2" />
+    <MESSAGE value="Todas las clases creadas y relaciones, version 0.3. Listo para parcial." />
+    <MESSAGE value="Todas las clases actualizadas y relacionadas, segun el diagrama porporcionado por el profesor, 0 fallos de momento." />
+    <MESSAGE value="Se unio Juan y Santi, solo un dataset y se crean y unen algunas consultas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se unio Juan y Santi, solo un dataset y se crean y unen algunas consultas." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

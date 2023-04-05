@@ -12,6 +12,7 @@ import java.io.Serializable;
 @ToString
 @AllArgsConstructor
 public class Imagen implements Serializable {
+
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +23,5 @@ public class Imagen implements Serializable {
 
     @ManyToOne
     private Producto producto;
+
 }

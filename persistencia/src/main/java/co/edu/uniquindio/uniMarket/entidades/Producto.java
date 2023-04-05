@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class Producto implements Serializable {
+
     @Id
     @EqualsAndHashCode.Include
     @Column(nullable = false)
@@ -55,7 +56,7 @@ public class Producto implements Serializable {
 
     @OneToMany(mappedBy = "producto")
     @ToString.Exclude
-    private List<Detalle_Compra> detalleComprasProducto = new ArrayList<>();
+    private List<DetalleCompra> detalleComprasProducto = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto")
     @ToString.Exclude
@@ -71,7 +72,7 @@ public class Producto implements Serializable {
 
     @OneToMany(mappedBy = "productoModerador")
     @ToString.Exclude
-    private List<Producto_Moderador> moderadorProducto = new ArrayList<>();
+    private List<ProductoModerador> moderadorProducto = new ArrayList<>();
 
     public Producto(String id, String nombre, Integer unidades, String descripcion, Double precio, boolean activo, Usuario vendedor) {
         this.id = id;
@@ -82,4 +83,5 @@ public class Producto implements Serializable {
         this.activo = activo;
         this.vendedor = vendedor;
     }
+
 }
