@@ -14,6 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>persistencia</module>
+        <module>negocio</module>
     </modules>
     <groupId>co.edu.uniquindio</groupId>
     <artifactId>proyecto-uniMarket</artifactId>
