@@ -12,18 +12,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProductoRepo extends JpaRepository<Producto, String> {
+public interface ProductoRepo extends JpaRepository<Producto, Integer> {
 
     Optional<Producto> findByNombreContains(String nombre);
 
     @Query("select p.vendedor.nombre from Producto p where p.id = :id")
-    String obtenerNombreVendedor(String id);
+    String obtenerNombreVendedor(Integer id);
 
     @Query("select c from Producto p join p.comentariosProducto c where p.id = :id")
-    List<Comentario> obtenerComentariosProducto1(String id);
+    List<Comentario> obtenerComentariosProducto1(Integer id);
 
     @Query("select c from Comentario  c where c.producto.id = :id")
-    List<Comentario> obtenerComentariosProducto2(String id);
+    List<Comentario> obtenerComentariosProducto2(Integer id);
 
     @Query("select p.nombre, c from Producto p left join p.comentariosProducto c")
     List<Object[]> listarProductosYComentarios();

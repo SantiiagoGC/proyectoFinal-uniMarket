@@ -60,12 +60,22 @@ public class UsuarioServicioTest {
     @Test
     public void listarTest() throws Exception {
         Usuario u = new Usuario("1234", "pepo",
-                "pepi Garcia", "pepito@gmail.com", "popoluser68",
+                "pepi Garcia", "pepito@gmail.com", "6666",
                 "Cra 11a #5-42", "3234327001");
 
         usuarioServicio.registarUsuario(u);
 
         List<Usuario> lista = usuarioServicio.listarUsuario();
         lista.forEach( System.out::println );
+    }
+
+    @Test
+    public void loginTest(){
+        try {
+            Usuario usuario = usuarioServicio.iniciarSesion("genesislabrador@gmail.com", "1234");
+            Assertions.assertNotNull(usuario);
+        } catch (Exception e) {
+            Assertions.fail(e.getMessage());
+        }
     }
 }

@@ -1,9 +1,14 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
+
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,16 +25,22 @@ public class Producto implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @Column(nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(nullable = false, length = 100)
+    @Length(max = 100)
+    @NotBlank(message = "El nombre del producto es obligatorio")
     private String nombre;
 
-    @Positive
+    @PositiveOrZero
     @Column(nullable = false)
     private Integer unidades;
 
     @Column(nullable = false, length = 250)
+    @Length(max = 250)
+    @NotBlank(message = "La descripcion del producto es obligatoria")
+    @Lob
     private  String descripcion;
 
     @Positive
@@ -74,8 +85,18 @@ public class Producto implements Serializable {
     @ToString.Exclude
     private List<ProductoModerador> moderadorProducto = new ArrayList<>();
 
-    public Producto(String id, String nombre, Integer unidades, String descripcion, Double precio, boolean activo, Usuario vendedor) {
-        this.id = id;
+    public Producto(String nombre, Integer unidades, String descripcion, Double precio, boolean activo, LocalDate fechaCreado, LocalDate fechaLimite, Usuario vendedor) {
+        this.nombre = nombre;
+        this.unidades = unidades;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.activo = activo;
+        this.fechaCreado = fechaCreado;
+        this.fechaLimite = fechaLimite;
+        this.vendedor = vendedor;
+    }
+
+    public Producto(String nombre, Integer unidades, String descripcion, Double precio, boolean activo, Usuario vendedor) {
         this.nombre = nombre;
         this.unidades = unidades;
         this.descripcion = descripcion;
