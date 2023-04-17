@@ -126,10 +126,11 @@ public class UsuarioTest {
         Assertions.assertEquals(5, respuesta.size());
     }
 
+    // Usuarios que han hecho comentario en tal producto solo 1 vez
     @Test
     @Sql("classpath:data.sql")
     public void listarUsuariosComentariosTest(){
-        List<Usuario> usuarios = usuarioRepo.listarUsuariosComentarios("123");
+        List<Usuario> usuarios = usuarioRepo.listarUsuariosComentarios(2);
         usuarios.forEach(System.out::println);
         Assertions.assertEquals(2, usuarios.size()); //57:13
     }

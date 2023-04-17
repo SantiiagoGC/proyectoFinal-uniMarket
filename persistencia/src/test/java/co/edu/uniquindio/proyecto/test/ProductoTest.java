@@ -31,7 +31,7 @@ public class ProductoTest {
     @Sql("classpath:data.sql")
     public void registrarTest() {
         Usuario vendedor = usuarioRepo.findById("1007531125").orElse(null);
-        Producto producto = new Producto("125", "Play Station", 3, "2x1", 2000000.0, true, vendedor);
+        Producto producto = new Producto("Play Station", 3, "2x1", 2000000.0, true, vendedor);
         Producto productoGuardado = productoRepo.save(producto);
         System.out.println(productoGuardado);
         Assertions.assertNotNull(productoGuardado);
@@ -40,20 +40,20 @@ public class ProductoTest {
     @Test
     @Sql("classpath:data.sql")
     public void eliminarTest() {
-        productoRepo.deleteById("123");
-        Producto productoBuscado = productoRepo.findById("123").orElse(null);
+        productoRepo.deleteById(1);
+        Producto productoBuscado = productoRepo.findById(1).orElse(null);
         Assertions.assertNull(productoBuscado);
     }
 
     @Test
     @Sql("classpath:data.sql")
     public void actualizarTest() {
-        Producto registrado = productoRepo.findById("123").orElse(null);
+        Producto registrado = productoRepo.findById(1).orElse(null);
         assert registrado != null;
         registrado.setPrecio(15.000);
         productoRepo.save(registrado);
 
-        Producto productoBuscado = productoRepo.findById("123").orElse(null);
+        Producto productoBuscado = productoRepo.findById(1).orElse(null);
 
         assert productoBuscado != null;
         Assertions.assertEquals(15.000, productoBuscado.getPrecio());
@@ -81,24 +81,24 @@ public class ProductoTest {
     @Test
     @Sql("classpath:data.sql")
     public void obtenerNombreVendedorTest() {
-        String nombre= productoRepo.obtenerNombreVendedor("123");
+        String nombre= productoRepo.obtenerNombreVendedor(1);
         Assertions.assertEquals("Juan Londoño", nombre);
     }
 
     @Test
     @Sql("classpath:data.sql")
     public void obtenerComentariosProducto1() {
-        List<Comentario> comentarios =  productoRepo.obtenerComentariosProducto1("123");
+        List<Comentario> comentarios =  productoRepo.obtenerComentariosProducto1(2);
         comentarios.forEach(System.out::println);
-        Assertions.assertEquals(2, comentarios.size());
+        Assertions.assertEquals(3, comentarios.size());
     }
 
     @Test
     @Sql("classpath:data.sql")
     public void obtenerComentariosProducto2() {
-        List<Comentario> comentarios =  productoRepo.obtenerComentariosProducto2("123");
+        List<Comentario> comentarios =  productoRepo.obtenerComentariosProducto2(2);
         comentarios.forEach(System.out::println);
-        Assertions.assertEquals(2, comentarios.size());
+        Assertions.assertEquals(3, comentarios.size());
     }
 
     @Test
@@ -106,7 +106,7 @@ public class ProductoTest {
     public void obtenerComentariosYProductosTest() {
         List<Object[]> respuesta =  productoRepo.listarProductosYComentarios();
         respuesta.forEach(o -> System.out.println(o[0]+" --- "+o[1]));
-        Assertions.assertEquals(3, respuesta.size());
+        Assertions.assertEquals(5, respuesta.size());
     }
 
     @Test

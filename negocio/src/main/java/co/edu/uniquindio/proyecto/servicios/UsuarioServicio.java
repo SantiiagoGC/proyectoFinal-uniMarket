@@ -18,4 +18,6 @@ public interface UsuarioServicio {
     List<Favorito> listaFavoritos(String email) throws Exception;
 
     Usuario obtenerUsuario (String codigo) throws Exception;
+
+    Usuario iniciarSesion(String email, String password) throws Exception;
 }
