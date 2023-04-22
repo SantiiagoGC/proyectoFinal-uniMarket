@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Se mejora un poquito el servicio del usuario con algunas funciones tambien se crea el servicio del producto.">
-      <change afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ClienteController.java" afterDir="false" />
+    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Se mejora un poquito el servicio del usuario con algunas funciones tambien se crea el servicio del producto. Se añade los indicios de un controlador.">
+      <change afterPath="$PROJECT_DIR$/negocio/src/test/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistencia/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ProductoServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ProductoServicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ProductoServicioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/ProductoServicioImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/UsuarioServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/UsuarioServicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/UsuarioServicioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/UsuarioServicioImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/test/java/co/edu/uniquindio/proyecto/test/ProductoServicioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/test/java/co/edu/uniquindio/proyecto/test/ProductoServicioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/ProductoRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/ProductoRepo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,33 +56,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-11 (3)&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/santi/Desktop/uniMarket/uniquindio/proyecto-uniMarket&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;887ceeeeb90d9a9183a4ce4871f96ac1&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "jdk.selected.JAVA_MODULE": "temurin-11 (3)",
+    "last_opened_file_path": "C:/Users/santi/Desktop/uniMarket/uniquindio/proyecto-uniMarket/negocio/src/test",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "spring.configuration.checksum": "887ceeeeb90d9a9183a4ce4871f96ac1",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.ProductoServicioTest.publicarProductoTest">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\santi\Desktop\uniMarket\uniquindio\proyecto-uniMarket\negocio\src\test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ProductoServicioTest.listarPorNombreYOPrecio">
+    <configuration name="ProductoServicioTest.listarPorNombreYOPrecio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="negocio" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto.test" />
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.ProductoServicioTest" />
+      <option name="METHOD_NAME" value="listarPorNombreYOPrecio" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductoServicioTest.obtenerProductoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="negocio" />
       <extension name="coverage">
@@ -105,21 +132,6 @@
       <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.ProductoServicioTest" />
       <option name="METHOD_NAME" value="publicarProductoTest" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persistencia" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="co.edu.uniquindio.proyecto.test" />
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto.test.ProductoTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductoServicioTest.listarPorNombreYOPrecio" />
         <item itemvalue="JUnit.ProductoServicioTest.publicarProductoTest" />
         <item itemvalue="JUnit.ProductoServicioTest.obtenerProductoTest" />
         <item itemvalue="JUnit.UsuarioServicioTest.loginTest" />
         <item itemvalue="JUnit.UsuarioServicioTest.registrarTest" />
-        <item itemvalue="JUnit.ProductoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -198,7 +210,8 @@
       <workItem from="1681364354557" duration="397000" />
       <workItem from="1681619128133" duration="7033000" />
       <workItem from="1681688884272" duration="19042000" />
-      <workItem from="1681750975968" duration="1366000" />
+      <workItem from="1681750975968" duration="1448000" />
+      <workItem from="1682125104547" duration="9497000" />
     </task>
     <task id="LOCAL-00001" summary="Todas las clases creadas y relaciones, version 0.2">
       <created>1678774454161</created>
@@ -270,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681712973366</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Se mejora un poquito el servicio del usuario con algunas funciones tambien se crea el servicio del producto. Se añade los indicios de un controlador.">
+      <created>1681752391719</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1681752391719</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +316,8 @@
     <MESSAGE value="Mas consultas JPQL + arreglados unos detalles" />
     <MESSAGE value="Se crea el servicio del usuario con algunas funciones." />
     <MESSAGE value="Se mejora un poquito el servicio del usuario con algunas funciones tambien se crea el servicio del producto." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se mejora un poquito el servicio del usuario con algunas funciones tambien se crea el servicio del producto." />
+    <MESSAGE value="Se mejora un poquito el servicio del usuario con algunas funciones tambien se crea el servicio del producto. Se añade los indicios de un controlador." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se mejora un poquito el servicio del usuario con algunas funciones tambien se crea el servicio del producto. Se añade los indicios de un controlador." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

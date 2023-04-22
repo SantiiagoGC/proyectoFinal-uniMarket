@@ -96,4 +96,5 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return usuarioRepo.findByEmailAndPassword(email, password)
                 .orElseThrow( () -> new Exception("Los datos de autenticación son incorrectos") );
     }
+
 }
