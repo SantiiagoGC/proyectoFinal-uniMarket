@@ -9,9 +9,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootTest(classes = NegocioApplication.class)
 @Transactional
@@ -39,6 +41,14 @@ public class ProductoServicioTest {
         }catch (Exception e){
             Assertions.fail(e.getMessage());
         }
+    }
+
+    @Sql("classpath:data.sql")
+    @Test
+    public void listarPorNombreYOPrecio() {
+      List<Producto> lista = productoServicio.listarPorNombreYOPrecio("Jabon", 12300.0);
+      lista.forEach( System.out::println );
+
     }
 
 }

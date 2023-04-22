@@ -19,27 +19,27 @@ public class ClienteController {
 
     @GetMapping
     public List<Usuario> listarUsuarios(){
-        return null;
+        return usuarioServicio.listarUsuario();
     }
 
     @GetMapping("/{cedula}")
-    public Usuario obtenerUsuario(@PathVariable String cedula){
-        return null;
+    public Usuario obtenerUsuario(@PathVariable String cedula) throws Exception {
+        return usuarioServicio.obtenerUsuario(cedula);
     }
 
     @PostMapping
-    public int registrarUsuario(@Valid @RequestBody Usuario usuarioPostDTO){
-        return 0;
+    public Usuario registrarUsuario(@Valid @RequestBody Usuario usuario) throws Exception {
+        return usuarioServicio.registarUsuario(usuario);
     }
 
     @DeleteMapping("/{cedula}")
-    public void eliminarUsuario(@PathVariable String cedula){
-
+    public void eliminarUsuario(@PathVariable String cedula) throws Exception {
+        usuarioServicio.eliminarUsuario(cedula);
     }
 
-    @PutMapping("/{cedula}")
-    public Usuario actualizarUsuario(@PathVariable String cedula, @Valid @RequestBody Usuario usuario){
-        return null;
+    @PutMapping
+    public Usuario actualizarUsuario(@Valid @RequestBody Usuario usuario) throws Exception {
+        return usuarioServicio.actualizarUsuario(usuario);
     }
 
     // Medio del punto 6.........

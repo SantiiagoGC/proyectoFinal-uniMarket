@@ -9,6 +9,7 @@ import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -87,4 +88,17 @@ public class ProductoServicioImpl implements ProductoServicio {
     public List<Favorito> listarFavoritos(String cedulaUsuario) {
         return null;
     }
+
+    @Override
+    public List<Producto> listarPorNombreYOPrecio(String nombre, Double precio) {
+
+        if (Objects.equals(nombre, "")){
+            return productoRepo.findAllByPrecio(precio);
+        } else if (precio == null) {
+            return productoRepo.findAllByNombreContaining(nombre);
+        }else {
+            return productoRepo.findAllByNombreContainingAndPrecio(nombre, precio);
+        }
+    }
+
 }

@@ -34,4 +34,10 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     @Query("select new co.edu.uniquindio.proyecto.dto.ProductoValido(p.nombre, p.descripcion, p.precio) from Producto p where p.fechaLimite > :fechaActual")
     List<ProductoValido> listarProductosValidosDTO(LocalDate fechaActual);
 
+    List<Producto> findAllByNombreContainingAndPrecio(String nombre, Double precio);
+
+    List<Producto> findAllByNombreContaining(String nombre);
+
+    List<Producto> findAllByPrecio(Double precio);
+
 }

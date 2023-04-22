@@ -32,4 +32,6 @@ public interface ProductoServicio {
 
     // Creo que no es necesario pasarle nada
     List<Favorito> listarFavoritos (String cedulaUsuario);
+
+    List<Producto> listarPorNombreYOPrecio(String nombre, Double precio);
 }
