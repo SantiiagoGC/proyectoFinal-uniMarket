@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto.servicios;
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ProductoServicio {
@@ -18,22 +19,22 @@ public interface ProductoServicio {
     String obtenerDescripcionProducto(Integer codigoProducto) throws ProductoNoEncontradoException;
 
     // Creo que no es necesario pasarle nada
-    List<Producto> listarProductos (String cedulaUsuario);
+    List<Producto> listarProducto () throws Exception;
 
     // Buscar productos por nombre y/o precio
-    List<Producto> buscarProductos(String nombre, Double precio);
-
     Comentario comentarProducto(Comentario comentario) throws Exception;
 
     Favorito guardarProductoFavoritos(Favorito favorito) throws Exception;
 
     void eliminarProductoFavoritos(Favorito favorito) throws Exception;
 
-    // Tal vez sea DetalleCompra
-    void comprarProductos(Compra compra) throws Exception;
-
     // Creo que no es necesario pasarle nada
-    List<Favorito> listarFavoritos (String cedulaUsuario);
-
     List<Producto> listarPorNombreYOPrecio(String nombre, Double precio);
+
+    String obtenerEmailVendedor(Integer id) throws Exception;
+
+    LocalDate obtenerFechaLimite(Integer id) throws Exception;
+
+    List<Categoria> listarProductosCategoria(String categoria) throws Exception;
+
 }

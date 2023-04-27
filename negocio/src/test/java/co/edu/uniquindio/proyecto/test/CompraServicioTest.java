@@ -2,11 +2,9 @@ package co.edu.uniquindio.proyecto.test;
 
 import co.edu.uniquindio.proyecto.NegocioApplication;
 import co.edu.uniquindio.proyecto.entidades.Compra;
-import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.CompraRepo;
 import co.edu.uniquindio.proyecto.servicios.CompraServicio;
-import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -28,8 +26,6 @@ public class CompraServicioTest {
     private CompraServicio compraServicio;
     @Autowired
     private UsuarioServicio usuarioServicio;
-    @Autowired
-    private ProductoServicio productoServicio;
 
     @Sql("classpath:data.sql")
     @Test
@@ -50,8 +46,6 @@ public class CompraServicioTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        Producto producto = productoServicio.obtenerProducto(1);
 
         LocalDate localDateCreado = LocalDate.of(2024,1,2);
 
@@ -75,8 +69,6 @@ public class CompraServicioTest {
             throw new RuntimeException(e);
         }
 
-        Producto producto = productoServicio.obtenerProducto(1);
-
         LocalDate localDateCreado = LocalDate.of(2024,1,2);
 
         Compra c = new Compra(1,localDateCreado, 200.0, "paypal", usuario);
@@ -99,8 +91,6 @@ public class CompraServicioTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        Producto producto = productoServicio.obtenerProducto(1);
 
         LocalDate localDateCreado = LocalDate.of(2024,1,2);
 

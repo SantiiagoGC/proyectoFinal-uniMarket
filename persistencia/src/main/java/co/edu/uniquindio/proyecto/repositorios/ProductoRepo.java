@@ -40,4 +40,9 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
 
     List<Producto> findAllByPrecio(Double precio);
 
+    @Query("select p.vendedor.email from Producto p where p.id = :id")
+    String obtenerEmailVendedor(Integer id);
+
+    @Query("select p.fechaLimite from Producto p where p.id = :id")
+    LocalDate obtenerFechaLimite(Integer id);
 }

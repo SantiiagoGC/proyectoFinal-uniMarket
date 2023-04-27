@@ -2,10 +2,13 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
+import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
 import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
 import co.edu.uniquindio.proyecto.repositorios.FavoritoRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,10 +22,13 @@ public class ProductoServicioImpl implements ProductoServicio {
 
     private final FavoritoRepo favoritoRepo;
 
-    public ProductoServicioImpl(ProductoRepo productoRepo, ComentarioRepo comentarioRepo, FavoritoRepo favoritoRepo) {
+    private final CategoriaRepo categoriaRepo;
+
+    public ProductoServicioImpl(ProductoRepo productoRepo, ComentarioRepo comentarioRepo, FavoritoRepo favoritoRepo, CategoriaRepo categoriaRepo) {
         this.productoRepo = productoRepo;
         this.comentarioRepo = comentarioRepo;
         this.favoritoRepo = favoritoRepo;
+        this.categoriaRepo = categoriaRepo;
     }
 
     @Override
@@ -46,14 +52,19 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         productoRepo.deleteById(codigoProducto);
     }
+
     @Override
     public void actualizarProducto(Producto producto) throws Exception {
-
+        Optional<Producto> buscado = productoRepo.findById(producto.getId());
+        if ( buscado.isEmpty() ){
+            throw new Exception("El producto no existe.");
+        }
+        productoRepo.save(producto);
     }
 
     @Override
     public Producto obtenerProducto(Integer codigoProducto) throws ProductoNoEncontradoException {
-        return null;
+        return productoRepo.findById(codigoProducto).orElseThrow( () -> new ProductoNoEncontradoException("El codigo del producto no es válido") );
     }
 
     @Override
@@ -64,13 +75,13 @@ public class ProductoServicioImpl implements ProductoServicio {
 
 
     @Override
-    public List<Producto> listarProductos(String cedulaUsuario) {
-        return null;
-    }
-
-    @Override
-    public List<Producto> buscarProductos(String nombre, Double precio) {
-        return null;
+    public List<Producto> listarProducto() throws Exception{
+        List<Producto> productos = productoRepo.findAll();
+        //productos.forEach(System.out::println);
+        if(productos.isEmpty()){
+            throw new Exception("No hay productos disponibles");
+        }
+        return productos;
     }
 
     @Override
@@ -103,16 +114,6 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
-    public void comprarProductos(Compra compra) throws Exception {
-
-    }
-
-    @Override
-    public List<Favorito> listarFavoritos(String cedulaUsuario) {
-        return null;
-    }
-
-    @Override
     public List<Producto> listarPorNombreYOPrecio(String nombre, Double precio) {
 
         if (Objects.equals(nombre, "")){
@@ -121,6 +122,34 @@ public class ProductoServicioImpl implements ProductoServicio {
             return productoRepo.findAllByNombreContaining(nombre);
         }else {
             return productoRepo.findAllByNombreContainingAndPrecio(nombre, precio);
+        }
+    }
+
+    @Override
+    public String obtenerEmailVendedor(Integer idProducto) throws Exception{
+        List<Producto> productos = productoRepo.findAll();
+        for (Producto producto : productos) {
+            if (producto.getId().equals(idProducto)) {
+                return productoRepo.obtenerEmailVendedor(idProducto);
+            }
+        }
+        throw new Exception("No se encontro el producto.");
+    }
+
+    @Override
+    public List<Categoria> listarProductosCategoria(String categoria) throws Exception {
+
+        return categoriaRepo.findAllByNombreIgnoreCase(categoria);
+    }
+
+    @Override
+    public LocalDate obtenerFechaLimite(Integer idProducto) throws Exception{
+
+        Optional<Producto> productos = productoRepo.findById(idProducto);
+        if(productos.isPresent()){
+            return productoRepo.obtenerFechaLimite(idProducto);
+        }else{
+            throw new Exception("Producto no encontrado.");
         }
     }
 
