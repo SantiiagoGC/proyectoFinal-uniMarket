@@ -21,11 +21,11 @@ public interface ProductoServicio {
     // Buscar productos por nombre y/o precio
     List<Producto> buscarProductos(String nombre, Double precio);
 
-    void comentarProducto(String mensaje, Usuario usuario, Producto producto) throws Exception;
+    Comentario comentarProducto(Comentario comentario) throws Exception;
 
-    void guardarProductoFavoritos(Producto producto, Usuario usuario) throws Exception;
+    Favorito guardarProductoFavoritos(Favorito favorito) throws Exception;
 
-    void eliminarProductoFavoritos(Producto producto, Usuario usuario) throws Exception;
+    void eliminarProductoFavoritos(Favorito favorito) throws Exception;
 
     // Tal vez sea DetalleCompra
     void comprarProductos(Compra compra) throws Exception;

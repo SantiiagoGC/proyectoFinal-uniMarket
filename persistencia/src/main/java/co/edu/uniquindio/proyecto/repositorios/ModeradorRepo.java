@@ -7,5 +7,9 @@ import java.util.Optional;
 
 @Repository
 public interface ModeradorRepo extends JpaRepository<Moderador, String> {
+
     Optional<Moderador> findByNombreUsuarioAndPassword(String nombreUsuario, String password);
+
+    Optional<Moderador> findByEmailAndPassword(String nombreUsuario, String password);
+
 }
