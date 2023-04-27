@@ -16,5 +16,7 @@ public interface ModeradorServicio {
 
     String rechazarProducto(Integer codigo) throws Exception;
 
+    String obtenerCorreoModerador (String cedula) throws Exception;
+
 }
 

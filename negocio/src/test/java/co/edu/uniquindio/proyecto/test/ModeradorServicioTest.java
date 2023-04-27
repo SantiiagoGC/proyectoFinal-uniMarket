@@ -70,5 +70,17 @@ public class ModeradorServicioTest {
         System.out.println(mensaje + "? "+producto.get().isActivo());
 
     }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void obtenerCorreoTest ()
+    {
+        try {
+            String encontrado = moderadorServicio.obtenerCorreoModerador("28948972");
+            System.out.println(encontrado);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

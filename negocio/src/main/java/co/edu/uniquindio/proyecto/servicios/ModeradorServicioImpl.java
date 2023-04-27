@@ -74,5 +74,17 @@ public class ModeradorServicioImpl implements ModeradorServicio {
         }
     }
 
+    @Override
+    public String obtenerCorreoModerador(String cedula) throws Exception {
+        Optional<Moderador> encotrado = moderadorRepo.findById(cedula);
+
+        if (encotrado.isEmpty())
+        {
+            throw new Exception("Cedula no encontrada !");
+        }
+
+        return moderadorRepo.obtenerCorreoModerador(cedula);
+    }
+
 }
 
