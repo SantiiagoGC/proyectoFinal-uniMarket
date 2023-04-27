@@ -1,0 +1,14 @@
+# Archivos compilados
+*.class
+
+# Archivos temporales de Maven
+/**/target/
+
+# Archivos de IntelliJ
+*.iml
+/.idea
+
+# Ignora arvhisvos de sistema Mac
+.DS_Store
+
+.idea/
