@@ -6,7 +6,6 @@ import co.edu.uniquindio.proyecto.entidades.Estado;
 import co.edu.uniquindio.proyecto.entidades.Moderador;
 import co.edu.uniquindio.proyecto.entidades.ProductoModerador;
 import co.edu.uniquindio.proyecto.repositorios.EstadoRepo;
-import co.edu.uniquindio.proyecto.entidades.Moderador;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.servicios.ModeradorServicio;
@@ -30,19 +29,17 @@ public class ModeradorServicioTest {
     @Autowired
     private EstadoRepo estadoRepo;
 
+    @Autowired
+    private ProductoRepo productoRepo;
+
     @Test
     @Sql("classpath:data.sql")
     public void consultarEstadoTest() throws Exception {
 
-
             Optional<Estado> estado = estadoRepo.findById(1);
             List<ProductoModerador> estadosObtenidos= moderadorServicio.consultarEstado(estado.get());
             estadosObtenidos.forEach(System.out::println);
-
     }
-
-    @Autowired
-    private ProductoRepo productoRepo;
 
     @Test
     public void loginTest(){
@@ -55,9 +52,6 @@ public class ModeradorServicioTest {
             Assertions.fail(e.getMessage());
         }
     }
-
-}
-
 
     @Test
     @Sql("classpath:data.sql")

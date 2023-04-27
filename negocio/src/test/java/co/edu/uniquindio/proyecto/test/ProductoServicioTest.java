@@ -5,8 +5,6 @@ import co.edu.uniquindio.proyecto.entidades.Comentario;
 import co.edu.uniquindio.proyecto.entidades.Favorito;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
-import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
-import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.repositorios.FavoritoRepo;
 import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
@@ -15,9 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import static org.mockito.Mockito.when;
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -36,6 +31,7 @@ public class ProductoServicioTest {
     private FavoritoRepo favoritoRepo;
 
     @Sql("classpath:data.sql")
+    @Test
     public void publicarProductoTest()  {
         try{
             Usuario vendedor = usuarioServicio.obtenerUsuario("1007531125");
