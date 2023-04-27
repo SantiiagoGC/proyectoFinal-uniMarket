@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FavoritoRepo extends JpaRepository<Favorito, Long> {
+public interface FavoritoRepo extends JpaRepository<Favorito, Integer> {
 }

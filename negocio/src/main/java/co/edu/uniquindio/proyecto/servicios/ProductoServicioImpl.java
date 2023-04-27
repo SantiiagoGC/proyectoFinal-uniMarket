@@ -1,13 +1,11 @@
 package co.edu.uniquindio.proyecto.servicios;
 
-import co.edu.uniquindio.proyecto.entidades.Compra;
-import co.edu.uniquindio.proyecto.entidades.Favorito;
-import co.edu.uniquindio.proyecto.entidades.Producto;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
+import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
+import co.edu.uniquindio.proyecto.repositorios.FavoritoRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,8 +15,14 @@ public class ProductoServicioImpl implements ProductoServicio {
 
     private final ProductoRepo productoRepo;
 
-    public ProductoServicioImpl(ProductoRepo productoRepo) {
+    private final ComentarioRepo comentarioRepo;
+
+    private final FavoritoRepo favoritoRepo;
+
+    public ProductoServicioImpl(ProductoRepo productoRepo, ComentarioRepo comentarioRepo, FavoritoRepo favoritoRepo) {
         this.productoRepo = productoRepo;
+        this.comentarioRepo = comentarioRepo;
+        this.favoritoRepo = favoritoRepo;
     }
 
     @Override
@@ -70,18 +74,32 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
-    public void comentarProducto(String mensaje, Usuario usuario, Producto producto) throws Exception {
+    public Comentario comentarProducto(Comentario comentario) throws Exception {
+        if(comentario != null){
+            comentarioRepo.save(comentario);
+        }
 
+        return comentario;
     }
 
     @Override
-    public void guardarProductoFavoritos(Producto producto, Usuario usuario) throws Exception {
+    public Favorito guardarProductoFavoritos(Favorito favorito) throws Exception {
+        if (favorito == null){
+            throw new Exception("No se encuentra el favorito");
+        }
 
+        return favoritoRepo.save(favorito);
     }
 
     @Override
-    public void eliminarProductoFavoritos(Producto producto, Usuario usuario) throws Exception {
+    public void eliminarProductoFavoritos(Favorito favorito) throws Exception {
+        Optional<Favorito> favoritoEncontrado = favoritoRepo.findById(favorito.getId());
 
+        if (favoritoEncontrado.isEmpty()){
+            throw new Exception("No se ha encontrado el favorito");
+        }else {
+            favoritoRepo.delete(favoritoEncontrado.get());
+        }
     }
 
     @Override

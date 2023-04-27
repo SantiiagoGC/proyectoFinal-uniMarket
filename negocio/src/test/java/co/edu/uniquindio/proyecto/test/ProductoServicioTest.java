@@ -1,10 +1,13 @@
 package co.edu.uniquindio.proyecto.test;
 
 import co.edu.uniquindio.proyecto.NegocioApplication;
+import co.edu.uniquindio.proyecto.entidades.Comentario;
+import co.edu.uniquindio.proyecto.entidades.Favorito;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import co.edu.uniquindio.proyecto.repositorios.FavoritoRepo;
 import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import org.junit.jupiter.api.Assertions;
@@ -29,10 +32,13 @@ public class ProductoServicioTest {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @Test
-    public void publicarProductoTest() {
-        try {
-            Usuario vendedor = usuarioServicio.obtenerUsuario("1004844936");
+    @Autowired
+    private FavoritoRepo favoritoRepo;
+
+    @Sql("classpath:data.sql")
+    public void publicarProductoTest()  {
+        try{
+            Usuario vendedor = usuarioServicio.obtenerUsuario("1007531125");
 
             LocalDate localDateCreado = LocalDate.of(2024, 1, 2);
             LocalDate localDateLimite = LocalDate.of(2024, 1, 2);
@@ -50,14 +56,16 @@ public class ProductoServicioTest {
     @Sql("classpath:data.sql")
     @Test
     public void listarPorNombreYOPrecio() {
-        List<Producto> lista = productoServicio.listarPorNombreYOPrecio("Jabon", 12300.0);
+
+        List<Producto> lista = productoServicio.listarPorNombreYOPrecio("Jabon", null);
         lista.forEach(System.out::println);
 
-
+     
     }
 
     @Sql("classpath:data.sql")
     @Test
+
     public void obtenerDescripcionProductoTest() {
         try {
             String descripcionObtenida = productoServicio.obtenerDescripcionProducto(1);
@@ -67,6 +75,53 @@ public class ProductoServicioTest {
             Assertions.fail(e.getMessage());
         }
     }
+    
+    @Sql("classpath:data.sql")
+    @Test
+    public void crearComentario() throws Exception {
+
+        Usuario usuario = usuarioServicio.obtenerUsuario("1010066053");
+
+        Producto producto = productoServicio.obtenerProducto(1);
+
+        LocalDate localDateCreado = LocalDate.of(2024,1,2);
+
+            Comentario comentario = new Comentario(1, "Ostia puta que malo", localDateCreado,
+                    usuario, producto);
+
+            Comentario comentario1 = productoServicio.comentarProducto(comentario);
+
+            System.out.println(comentario1);
+            Assertions.assertNotNull(comentario1);
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void agregarProductoFavoritoTest() throws Exception {
+        Producto producto = productoServicio.obtenerProducto(1);
+        Usuario usuario = usuarioServicio.obtenerUsuario("1010066053");
+        Favorito favorito = new Favorito(1, producto, usuario);
+        Favorito favoritoPrueba = productoServicio.guardarProductoFavoritos(favorito);
+
+        System.out.println(favoritoPrueba);
+    }
+
+    @Test
+    @Sql("classpath:data.sql")
+    public void eliminarProductoFavoritoTest() throws Exception {
+
+        Producto producto = productoServicio.obtenerProducto(1);
+        Usuario usuario = usuarioServicio.obtenerUsuario("1010066053");
+        Favorito favorito = new Favorito(2, producto, usuario);
+
+        productoServicio.guardarProductoFavoritos(favorito);
+
+        productoServicio.eliminarProductoFavoritos(favorito);
+        Favorito favoritoBuscado = favoritoRepo.findById(2).orElse(null);
+        Assertions.assertNull(favoritoBuscado);
+
+    }
+
 }
 
 
