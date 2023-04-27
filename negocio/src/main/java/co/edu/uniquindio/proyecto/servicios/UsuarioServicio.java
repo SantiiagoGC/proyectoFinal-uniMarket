@@ -22,4 +22,6 @@ public interface UsuarioServicio {
 
     Usuario iniciarSesion(String email, String password) throws Exception;
 
+    void publicarProducto(Usuario u, Producto p) throws Exception;
+
 }
