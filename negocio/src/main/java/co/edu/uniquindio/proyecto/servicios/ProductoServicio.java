@@ -15,6 +15,8 @@ public interface ProductoServicio {
 
     Producto obtenerProducto(Integer codigoProducto) throws ProductoNoEncontradoException;
 
+    String obtenerDescripcionProducto(Integer codigoProducto) throws ProductoNoEncontradoException;
+
     // Creo que no es necesario pasarle nada
     List<Producto> listarProductos (String cedulaUsuario);
 

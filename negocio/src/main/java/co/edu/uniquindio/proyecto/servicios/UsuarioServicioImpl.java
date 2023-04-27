@@ -96,15 +96,14 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return buscado.get();
     }
 
+
     @Override
     public Usuario iniciarSesion(String email, String password) throws Exception {
         return usuarioRepo.findByEmailAndPassword(email, password)
                 .orElseThrow( () -> new Exception("Los datos de autenticación son incorrectos") );
     }
 
-    @Override
-    public void publicarProducto(Usuario u, Producto p) throws Exception {
-
-    }
+}
 
 }
+

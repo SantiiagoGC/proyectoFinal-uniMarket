@@ -5,6 +5,8 @@ import co.edu.uniquindio.proyecto.entidades.Comentario;
 import co.edu.uniquindio.proyecto.entidades.Favorito;
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
+import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.repositorios.FavoritoRepo;
 import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
@@ -13,6 +15,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
+import static org.mockito.Mockito.when;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -31,21 +35,20 @@ public class ProductoServicioTest {
     @Autowired
     private FavoritoRepo favoritoRepo;
 
-    @Test
     @Sql("classpath:data.sql")
     public void publicarProductoTest()  {
         try{
             Usuario vendedor = usuarioServicio.obtenerUsuario("1007531125");
 
-            LocalDate localDateCreado = LocalDate.of(2024,1,2);
-            LocalDate localDateLimite = LocalDate.of(2024,1,2);
+            LocalDate localDateCreado = LocalDate.of(2024, 1, 2);
+            LocalDate localDateLimite = LocalDate.of(2024, 1, 2);
 
             Producto producto = new Producto("Muñeca inflabe", 2,
                     "Muy buena 3 velocidades", 25000.0, true, localDateCreado, localDateLimite, vendedor);
 
             Producto publicado = productoServicio.publicarProducto(producto);
             Assertions.assertNotNull(publicado);
-        }catch (Exception e){
+        } catch (Exception e) {
             Assertions.fail(e.getMessage());
         }
     }
@@ -53,11 +56,26 @@ public class ProductoServicioTest {
     @Sql("classpath:data.sql")
     @Test
     public void listarPorNombreYOPrecio() {
-      List<Producto> lista = productoServicio.listarPorNombreYOPrecio("Jabon", null);
-      lista.forEach( System.out::println );
 
+        List<Producto> lista = productoServicio.listarPorNombreYOPrecio("Jabon", null);
+        lista.forEach(System.out::println);
+
+     
     }
 
+    @Sql("classpath:data.sql")
+    @Test
+
+    public void obtenerDescripcionProductoTest() {
+        try {
+            String descripcionObtenida = productoServicio.obtenerDescripcionProducto(1);
+            System.out.printf(descripcionObtenida);
+            Assertions.assertEquals("Jabon 2x1", descripcionObtenida);
+        } catch (Exception e) {
+            Assertions.fail(e.getMessage());
+        }
+    }
+    
     @Sql("classpath:data.sql")
     @Test
     public void crearComentario() throws Exception {
@@ -105,3 +123,5 @@ public class ProductoServicioTest {
     }
 
 }
+
+

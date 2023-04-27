@@ -46,7 +46,6 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         productoRepo.deleteById(codigoProducto);
     }
-
     @Override
     public void actualizarProducto(Producto producto) throws Exception {
 
@@ -54,9 +53,15 @@ public class ProductoServicioImpl implements ProductoServicio {
 
     @Override
     public Producto obtenerProducto(Integer codigoProducto) throws ProductoNoEncontradoException {
-        return productoRepo.findById(codigoProducto)
-                .orElseThrow( () -> new ProductoNoEncontradoException("El codigo del producto no es válido") );
+        return null;
     }
+
+    @Override
+    public String obtenerDescripcionProducto(Integer codigoProducto) throws ProductoNoEncontradoException {
+        Optional<Producto> producto = productoRepo.findById(codigoProducto);
+        return producto.get().getDescripcion();
+    }
+
 
     @Override
     public List<Producto> listarProductos(String cedulaUsuario) {
