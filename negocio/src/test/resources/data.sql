@@ -22,3 +22,7 @@ insert into moderador values ("28948972", "carmenza@uqvirtual.edu.co", "Carmenza
 
 insert into favorito values (1, 2, "1007531125");
 insert into favorito values (2, 1, "1007531125");
+
+insert into estado values (1, "Activo");
+insert into producto_moderador values (1, "2023/10/05", "porque si", 1, "28948972", 1 );
+insert into producto_moderador values (2, "2023/10/06", "porque santi es gei", 1, "28948972", 2 )
