@@ -2,17 +2,18 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
-import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
-import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
-import co.edu.uniquindio.proyecto.repositorios.FavoritoRepo;
-import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import co.edu.uniquindio.proyecto.modelo.dto.ProductoPostDTO;
+import co.edu.uniquindio.proyecto.repositorios.*;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class ProductoServicioImpl implements ProductoServicio {
 
@@ -24,21 +25,56 @@ public class ProductoServicioImpl implements ProductoServicio {
 
     private final CategoriaRepo categoriaRepo;
 
-    public ProductoServicioImpl(ProductoRepo productoRepo, ComentarioRepo comentarioRepo, FavoritoRepo favoritoRepo, CategoriaRepo categoriaRepo) {
-        this.productoRepo = productoRepo;
-        this.comentarioRepo = comentarioRepo;
-        this.favoritoRepo = favoritoRepo;
-        this.categoriaRepo = categoriaRepo;
-    }
+    private final UsuarioRepo usuarioRepo;
+
+    private final ImagenRepo imagenRepo;
 
     @Override
-    public Producto publicarProducto(Producto producto) throws Exception {
+    public int publicarProducto(ProductoPostDTO producto) throws Exception {
         try{
-            return productoRepo.save(producto);
+
+            Producto pro = new Producto();
+            pro.setNombre( producto.getNombre() );
+            pro.setDescripcion( producto.getDescripcion() );
+            pro.setUnidades( producto.getUnidades() );
+            pro.setPrecio( producto.getPrecio() );
+            pro.setVendedor( usuarioRepo.findById(producto.getCedulaVendedor()).get() );
+            pro.setImagenesProducto( guardarImagenes(producto.getRutasImagenes()) );
+            pro.setFechaCreado( LocalDate.now() );
+            pro.setFechaLimite( LocalDate.now().plusDays(60) );
+            pro.setActivo(false);
+            pro.setCategoriaProducto( obtenerCategorias(producto.getCodigosCategorias()) );
+
+            return productoRepo.save(pro).getId();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
+
+    public List<Imagen> guardarImagenes(List<String> rutas){
+
+        List<Imagen> respuesta = new ArrayList<>();
+
+        for(String ruta: rutas) {
+            Imagen imagen = new Imagen();
+            imagen.setRuta(ruta);
+            respuesta.add( imagenRepo.save(imagen) );
+        }
+
+        return respuesta;
+    }
+
+    public List<Categoria> obtenerCategorias(List<Integer> idsCategorias){
+
+        List<Categoria> respuesta = new ArrayList<>();
+
+        for(Integer id: idsCategorias) {
+            respuesta.add( categoriaRepo.findById(id).get() );
+        }
+
+        return respuesta;
+    }
+
 
     // Eliminar cuenta tendria que eliminar primero los comentarios de ahi los productos de ahi si el usuario
     // Eliminacion en cascada soluciona eso

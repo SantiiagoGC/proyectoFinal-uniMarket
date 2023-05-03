@@ -1,9 +1,8 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
-
-import javax.persistence.*;
-import javax.validation.constraints.Positive;
 import java.io.Serializable;
 
 @Entity

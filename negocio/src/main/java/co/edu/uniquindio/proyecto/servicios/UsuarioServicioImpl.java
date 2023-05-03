@@ -2,8 +2,13 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Favorito;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.UsuarioPostDTO;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,12 +17,15 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     private final UsuarioRepo usuarioRepo;
 
-    public UsuarioServicioImpl(UsuarioRepo usuarioRepo) {
+    private final PasswordEncoder passwordEncoder;
+
+    public UsuarioServicioImpl(UsuarioRepo usuarioRepo, PasswordEncoder passwordEncoder) {
         this.usuarioRepo = usuarioRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public Usuario registarUsuario(Usuario u) throws Exception {
+    public String registarUsuario(UsuarioPostDTO u) throws Exception {
 
         Optional<Usuario> buscado = usuarioRepo.findById(u.getCedula());
 
@@ -35,16 +43,57 @@ public class UsuarioServicioImpl implements UsuarioServicio {
             throw new Exception("El username ya esta en uso");
         }
 
-        return usuarioRepo.save(u);
+        Usuario usuario = new Usuario();
+        usuario.setCedula( u.getCedula() );
+        usuario.setNombre( u.getNombre() );
+        usuario.setNombreUsuario( u.getNombreUsuario() );
+        usuario.setEmail( u.getEmail() );
+        usuario.setPassword( passwordEncoder.encode( u.getPassword()) );
+        usuario.setDireccion( u.getDireccion() );
+        usuario.setTelefono( u.getTelefono() );
+
+        Usuario guardado = usuarioRepo.save(usuario);
+
+        return guardado.getCedula();
     }
 
-    @Override
-    public Usuario actualizarUsuario(Usuario u) throws Exception {
-        Optional<Usuario> buscado = usuarioRepo.findById(u.getCedula());
+    /*@Override
+    public String actualizarUsuario(String cedula, UsuarioGetDTO u) throws Exception {
+        Optional<Usuario> buscado = usuarioRepo.findById(cedula);
         if ( buscado.isEmpty() ){
             throw new Exception("El usuario no existe");
         }
-        return usuarioRepo.save(u);
+        Usuario guardado = buscado.get();
+
+        guardado.setCedula( u.getCedula() );
+        guardado.setNombre( u.getNombre() );
+        guardado.setNombreUsuario( u.getNombreUsuario() );
+        guardado.setEmail( u.getCorreo() );
+        guardado.setDireccion( u.getDireccion() );
+        guardado.setTelefono( u.getTelefono() );
+
+        convertir( usuarioRepo.save(guardado) );
+
+        return  guardado.getCedula();
+    }*/
+
+    @Override
+    public String actualizarUsuario(String cedula, UsuarioGetDTO u) throws Exception {
+        Optional<Usuario> registro = usuarioRepo.findById(cedula);
+
+        if (registro.isEmpty()) {
+            throw new Exception("El cliente no existe");
+        }
+
+        Usuario guardado = registro.get();
+
+        guardado.setNombre( u.getNombre() );
+        guardado.setEmail( u.getCorreo() );
+        guardado.setDireccion( u.getDireccion() );
+        guardado.setTelefono( u.getTelefono() );
+
+        return convertir(usuarioRepo.save(guardado)).getCorreo();
+
     }
 
     private Optional<Usuario> buscarPorEmail(String email){
@@ -63,8 +112,8 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
-    public List<Usuario> listarUsuario() {
-        return usuarioRepo.findAll();
+    public List<UsuarioGetDTO> listarUsuarios() {
+        return convertirLista( usuarioRepo.findAll() );
     }
 
     @Override
@@ -80,7 +129,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
-    public Usuario obtenerUsuario(String codigo) throws Exception {
+    public UsuarioGetDTO obtenerUsuario(String codigo) throws Exception {
 
         Optional<Usuario> buscado = usuarioRepo.findById(codigo);
 
@@ -88,7 +137,16 @@ public class UsuarioServicioImpl implements UsuarioServicio {
             throw new Exception("El usuario NO existe");
         }
 
-        return buscado.get();
+        Usuario aux = buscado.get();
+
+        return new UsuarioGetDTO(
+            aux.getCedula(),
+                aux.getNombre(),
+                aux.getNombreUsuario(),
+                aux.getEmail(),
+                aux.getDireccion(),
+                aux.getTelefono()
+        );
     }
 
 
@@ -97,6 +155,25 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return usuarioRepo.findByEmailAndPassword(email, password)
                 .orElseThrow( () -> new Exception("Los datos de autenticación son incorrectos") );
     }
+
+    private  UsuarioGetDTO convertir(Usuario usuario){
+        return new UsuarioGetDTO(
+                usuario.getCedula(),
+                usuario.getNombre(),
+                usuario.getNombreUsuario(),
+                usuario.getEmail(),
+                usuario.getDireccion(),
+                usuario.getTelefono());
+    }
+
+    private List<UsuarioGetDTO> convertirLista(List<Usuario> lista){
+        List<UsuarioGetDTO> respuesta = new ArrayList<>();
+        for(Usuario c : lista){
+            respuesta.add( convertir(c) );
+        }
+        return respuesta;
+    }
+
 
 }
 

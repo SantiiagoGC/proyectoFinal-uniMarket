@@ -2,13 +2,14 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.excepciones.ProductoNoEncontradoException;
+import co.edu.uniquindio.proyecto.modelo.dto.ProductoPostDTO;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public interface ProductoServicio {
 
-    Producto publicarProducto(Producto producto) throws Exception;
+    int publicarProducto(ProductoPostDTO producto) throws Exception;
 
     void eliminarProducto(Integer codigoProducto) throws Exception;
 

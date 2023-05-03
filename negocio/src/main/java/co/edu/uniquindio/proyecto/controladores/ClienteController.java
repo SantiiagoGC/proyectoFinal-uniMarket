@@ -1,12 +1,13 @@
 package co.edu.uniquindio.proyecto.controladores;
 
-import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.UsuarioPostDTO;
 import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,18 +19,18 @@ public class ClienteController {
     private final UsuarioServicio usuarioServicio;
 
     @GetMapping
-    public List<Usuario> listarUsuarios(){
-        return usuarioServicio.listarUsuario();
-    }
-
-    @GetMapping("/{cedula}")
-    public Usuario obtenerUsuario(@PathVariable String cedula) throws Exception {
-        return usuarioServicio.obtenerUsuario(cedula);
+    public List<UsuarioGetDTO> listarUsuarios(){
+        return usuarioServicio.listarUsuarios();
     }
 
     @PostMapping
-    public Usuario registrarUsuario(@Valid @RequestBody Usuario usuario) throws Exception {
+    public String registrarUsuario(@Valid @RequestBody UsuarioPostDTO usuario) throws Exception {
         return usuarioServicio.registarUsuario(usuario);
+    }
+
+    @GetMapping("/{cedula}")
+    public UsuarioGetDTO obtenerUsuario(@PathVariable String cedula) throws Exception {
+        return usuarioServicio.obtenerUsuario(cedula);
     }
 
     @DeleteMapping("/{cedula}")
@@ -37,10 +38,10 @@ public class ClienteController {
         usuarioServicio.eliminarUsuario(cedula);
     }
 
-    @PutMapping
-    public Usuario actualizarUsuario(@Valid @RequestBody Usuario usuario) throws Exception {
-        return usuarioServicio.actualizarUsuario(usuario);
-    }
+    /*@PutMapping("/{cedula}")
+    public UsuarioGetDTO actualizarUsuario(@PathVariable String cedula, @Valid @RequestBody UsuarioPostDTO usuario)
+            throws Exception {
+        return usuarioServicio.actualizarUsuario(cedula, usuario);
+    }*/
 
-    // Medio del punto 6.........
 }

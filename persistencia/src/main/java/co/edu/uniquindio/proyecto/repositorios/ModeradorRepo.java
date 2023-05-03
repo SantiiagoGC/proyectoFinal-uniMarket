@@ -16,4 +16,6 @@ public interface ModeradorRepo extends JpaRepository<Moderador, String> {
     @Query("select m.email from Moderador m where m.cedula = :cedula")
     String obtenerCorreoModerador(String cedula);
 
+    Optional<Moderador> findByEmail(String email);
+
 }
