@@ -20,8 +20,8 @@ public class Moderador extends Persona implements Serializable {
     @ToString.Exclude
     private List<ProductoModerador> productosModerador;
 
-    public Moderador(String cedula, String nombreUsuario, String nombre, String email, String password) {
-        super(cedula, nombreUsuario, nombre, email, password);
+    public Moderador(String cedula, String nombreUsuario, String fotoPefil, String nombre, String email, String password) {
+        super(cedula, nombreUsuario, fotoPefil, nombre, email, password);
     }
 
 }

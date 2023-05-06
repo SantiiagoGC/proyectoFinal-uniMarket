@@ -44,6 +44,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         }
 
         Usuario usuario = new Usuario();
+        usuario.setFotoPerfil( u.getFotoPerfil() );
         usuario.setCedula( u.getCedula() );
         usuario.setNombre( u.getNombre() );
         usuario.setNombreUsuario( u.getNombreUsuario() );
@@ -91,6 +92,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         guardado.setEmail( u.getCorreo() );
         guardado.setDireccion( u.getDireccion() );
         guardado.setTelefono( u.getTelefono() );
+        guardado.setFotoPerfil( u.getFotoPerfil() );
 
         return convertir(usuarioRepo.save(guardado)).getCorreo();
 
@@ -145,7 +147,8 @@ public class UsuarioServicioImpl implements UsuarioServicio {
                 aux.getNombreUsuario(),
                 aux.getEmail(),
                 aux.getDireccion(),
-                aux.getTelefono()
+                aux.getTelefono(),
+                aux.getFotoPerfil()
         );
     }
 
@@ -163,7 +166,8 @@ public class UsuarioServicioImpl implements UsuarioServicio {
                 usuario.getNombreUsuario(),
                 usuario.getEmail(),
                 usuario.getDireccion(),
-                usuario.getTelefono());
+                usuario.getTelefono(),
+                usuario.getFotoPerfil());
     }
 
     private List<UsuarioGetDTO> convertirLista(List<Usuario> lista){

@@ -40,8 +40,8 @@ public class Usuario extends Persona implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<Favorito>  productosFavoritos = new ArrayList<>();
 
-    public Usuario(String cedula, String nombreUsuario, String nombre, String email, String password, String direccion, String telefono) {
-        super(cedula, nombreUsuario, nombre, email, password);
+    public Usuario(String cedula, String nombreUsuario, String fotoPefil, String nombre, String email, String password, String direccion, String telefono) {
+        super(cedula, nombreUsuario, fotoPefil, nombre, email, password);
         this.direccion = direccion;
         this.telefono = telefono;
     }

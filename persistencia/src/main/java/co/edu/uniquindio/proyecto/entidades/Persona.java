@@ -26,6 +26,8 @@ public class Persona implements Serializable {
     @Length(max = 100)
     private String nombreUsuario;
 
+    private String fotoPerfil;
+
     @Column(nullable = false, length = 100)
     @Length(max = 100)
     private String nombre;

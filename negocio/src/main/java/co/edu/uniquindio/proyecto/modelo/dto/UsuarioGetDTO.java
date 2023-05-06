@@ -11,4 +11,5 @@ public class UsuarioGetDTO {
     private String correo;
     private String direccion;
     private String telefono;
+    private String fotoPerfil;
 }
