@@ -30,7 +30,7 @@ public class ProductoTest {
     @Test
     @Sql("classpath:data.sql")
     public void registrarTest() {
-        Usuario vendedor = usuarioRepo.findById("1007531125").orElse(null);
+        Usuario vendedor = usuarioRepo.findById(1007531125).orElse(null);
         Producto producto = new Producto("Play Station", 3, "2x1", 2000000.0, true, vendedor);
         Producto productoGuardado = productoRepo.save(producto);
         System.out.println(productoGuardado);

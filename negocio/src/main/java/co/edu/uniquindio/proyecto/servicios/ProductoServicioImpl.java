@@ -38,7 +38,8 @@ public class ProductoServicioImpl implements ProductoServicio {
             pro.setDescripcion( producto.getDescripcion() );
             pro.setUnidades( producto.getUnidades() );
             pro.setPrecio( producto.getPrecio() );
-            pro.setVendedor( usuarioRepo.findById(producto.getCedulaVendedor()).get() );
+            Optional<Usuario> encontrado = usuarioRepo.findById(producto.getCedulaVendedor());
+            pro.setVendedor( encontrado.get() );
             pro.setImagenesProducto( guardarImagenes(producto.getRutasImagenes()) );
             pro.setFechaCreado( LocalDate.now() );
             pro.setFechaLimite( LocalDate.now().plusDays(60) );

@@ -17,10 +17,8 @@ import java.io.Serializable;
 public class Persona implements Serializable {
 
     @Id
-    @Column(length = 10)
-    @Length(max = 10)
     @EqualsAndHashCode.Include
-    private String cedula;
+    private Integer cedula;
 
     @Column(nullable = false, unique = true, length = 100)
     @Length(max = 100)

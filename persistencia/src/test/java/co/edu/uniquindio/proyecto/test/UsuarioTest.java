@@ -26,7 +26,7 @@ public class UsuarioTest {
 
     @Test
     public void registrarUsuarioTest(){
-        Usuario usuario = new Usuario("1007531125", "Juan Londoño", "juanf.londonob@uqvirtual.edu.co", "123456", "Carrera 15 # 10N - 35", "3103003738", "JuanL");
+        Usuario usuario = new Usuario(1010066053,"Santii0628","url","Santiago","Santiaguito@gmail.com","1234","Cra 11a","323");
         Usuario usuarioGuardado = usuarioRepo.save(usuario);
         Assertions.assertNotNull(usuarioGuardado);
     }
@@ -34,19 +34,19 @@ public class UsuarioTest {
     @Test
     @Sql("classpath:data.sql")
     public void eliminarTest(){
-        usuarioRepo.deleteById("1007531125");
-        Usuario usuarioBuscado = usuarioRepo.findById("1007531125").orElse(null);
+        usuarioRepo.deleteById(1007531125);
+        Usuario usuarioBuscado = usuarioRepo.findById(1007531125).orElse(null);
         Assertions.assertNull(usuarioBuscado);
     }
 
     @Test
     @Sql("classpath:data.sql")
     public void actualizarTest(){
-        Usuario guardado = usuarioRepo.findById("1007531125").orElse(null);
+        Usuario guardado = usuarioRepo.findById(1007531125).orElse(null);
         assert guardado != null;
         guardado.setDireccion("Carrera 4 # 6 - 38");
         usuarioRepo.save(guardado);
-        Usuario usuarioBuscado = usuarioRepo.findById("1007531125").orElse(null);
+        Usuario usuarioBuscado = usuarioRepo.findById(1007531125).orElse(null);
         assert usuarioBuscado != null;
         Assertions.assertEquals("Carrera 4 # 6 - 38", usuarioBuscado.getDireccion());
     }

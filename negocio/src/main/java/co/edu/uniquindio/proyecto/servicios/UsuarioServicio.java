@@ -9,17 +9,17 @@ import java.util.List;
 
 public interface UsuarioServicio {
 
-    String registarUsuario(UsuarioPostDTO u) throws Exception;
+    Integer registarUsuario(UsuarioPostDTO u) throws Exception;
 
-    String actualizarUsuario(String cedula, UsuarioGetDTO u) throws Exception;
+    UsuarioGetDTO actualizarUsuario(Integer cedula, UsuarioPostDTO u) throws Exception;
 
-    void eliminarUsuario(String cedula) throws Exception;
+    void eliminarUsuario(Integer cedula) throws Exception;
 
     List<UsuarioGetDTO> listarUsuarios();
 
     List<Favorito> listaFavoritos(String email) throws Exception;
 
-    UsuarioGetDTO obtenerUsuario (String codigo) throws Exception;
+    UsuarioGetDTO obtenerUsuario (Integer codigo) throws Exception;
 
     Usuario iniciarSesion(String email, String password) throws Exception;
 

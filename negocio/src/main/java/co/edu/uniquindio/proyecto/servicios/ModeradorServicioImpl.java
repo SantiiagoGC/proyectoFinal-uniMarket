@@ -75,7 +75,7 @@ public class ModeradorServicioImpl implements ModeradorServicio {
     }
 
     @Override
-    public String obtenerCorreoModerador(String cedula) throws Exception {
+    public Integer obtenerCorreoModerador(Integer cedula) throws Exception {
         Optional<Moderador> encotrado = moderadorRepo.findById(cedula);
 
         if (encotrado.isEmpty())
@@ -85,6 +85,7 @@ public class ModeradorServicioImpl implements ModeradorServicio {
 
         return moderadorRepo.obtenerCorreoModerador(cedula);
     }
+
 
 }
 

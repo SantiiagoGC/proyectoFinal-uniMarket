@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 @Data
 @AllArgsConstructor
 public class UsuarioGetDTO {
-    private String cedula;
+    private Integer cedula;
     private String nombre;
     private String nombreUsuario;
     private String correo;

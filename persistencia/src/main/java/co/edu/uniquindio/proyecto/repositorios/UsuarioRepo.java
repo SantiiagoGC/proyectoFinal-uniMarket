@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UsuarioRepo extends JpaRepository<Usuario, String> {
+public interface UsuarioRepo extends JpaRepository<Usuario, Integer> {
 
     List<Usuario> findAllByNombreContains(String nombre);
 

@@ -19,13 +19,19 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     private final PasswordEncoder passwordEncoder;
 
-    public UsuarioServicioImpl(UsuarioRepo usuarioRepo, PasswordEncoder passwordEncoder) {
+    private final EmailServicioImpl emailServicio;
+
+    public UsuarioServicioImpl(UsuarioRepo usuarioRepo, PasswordEncoder passwordEncoder, EmailServicioImpl emailServicio) {
         this.usuarioRepo = usuarioRepo;
         this.passwordEncoder = passwordEncoder;
+        this.emailServicio = emailServicio;
     }
 
+    /*
+    Implementado el Registrar usuarios con DTO.
+     */
     @Override
-    public String registarUsuario(UsuarioPostDTO u) throws Exception {
+    public Integer registarUsuario(UsuarioPostDTO u) throws Exception {
 
         Optional<Usuario> buscado = usuarioRepo.findById(u.getCedula());
 
@@ -54,6 +60,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setTelefono( u.getTelefono() );
 
         Usuario guardado = usuarioRepo.save(usuario);
+        //emailServicio.enviarEmail(new EmailDTO("Cuenta creada", "Felicidades Crack", usuario.getEmail()));
 
         return guardado.getCedula();
     }
@@ -78,8 +85,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return  guardado.getCedula();
     }*/
 
+    /*
+    Implementado el Actualizar usuario con DTO
+     */
     @Override
-    public String actualizarUsuario(String cedula, UsuarioGetDTO u) throws Exception {
+    public UsuarioGetDTO actualizarUsuario(Integer cedula, UsuarioPostDTO u) throws Exception {
         Optional<Usuario> registro = usuarioRepo.findById(cedula);
 
         if (registro.isEmpty()) {
@@ -89,12 +99,12 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Usuario guardado = registro.get();
 
         guardado.setNombre( u.getNombre() );
-        guardado.setEmail( u.getCorreo() );
+        guardado.setEmail( u.getEmail() );
         guardado.setDireccion( u.getDireccion() );
         guardado.setTelefono( u.getTelefono() );
         guardado.setFotoPerfil( u.getFotoPerfil() );
 
-        return convertir(usuarioRepo.save(guardado)).getCorreo();
+        return convertir(usuarioRepo.save(guardado));
 
     }
 
@@ -102,8 +112,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         return  usuarioRepo.findByEmail(email);
     }
 
+    /*
+    Implementado No Necesita DTO
+     */
     @Override
-    public void eliminarUsuario(String cedula) throws Exception {
+    public void eliminarUsuario(Integer cedula) throws Exception {
 
         Optional<Usuario> buscado = usuarioRepo.findById(cedula);
         if( buscado.isEmpty() ){
@@ -113,6 +126,9 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     }
 
+    /*
+    Listar con DTO implementado
+     */
     @Override
     public List<UsuarioGetDTO> listarUsuarios() {
         return convertirLista( usuarioRepo.findAll() );
@@ -130,8 +146,11 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     }
 
+    /*
+    Consultar con DTO implementado
+     */
     @Override
-    public UsuarioGetDTO obtenerUsuario(String codigo) throws Exception {
+    public UsuarioGetDTO obtenerUsuario(Integer codigo) throws Exception {
 
         Optional<Usuario> buscado = usuarioRepo.findById(codigo);
 
@@ -153,12 +172,18 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
 
+    /*
+    No necesita DTO
+     */
     @Override
     public Usuario iniciarSesion(String email, String password) throws Exception {
         return usuarioRepo.findByEmailAndPassword(email, password)
                 .orElseThrow( () -> new Exception("Los datos de autenticación son incorrectos") );
     }
 
+    /*
+    Convertir de adentro hacia afuera
+     */
     private  UsuarioGetDTO convertir(Usuario usuario){
         return new UsuarioGetDTO(
                 usuario.getCedula(),
@@ -170,6 +195,9 @@ public class UsuarioServicioImpl implements UsuarioServicio {
                 usuario.getFotoPerfil());
     }
 
+    /*
+    Convertir listas
+     */
     private List<UsuarioGetDTO> convertirLista(List<Usuario> lista){
         List<UsuarioGetDTO> respuesta = new ArrayList<>();
         for(Usuario c : lista){

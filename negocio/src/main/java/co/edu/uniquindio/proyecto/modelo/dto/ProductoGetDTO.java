@@ -13,7 +13,7 @@ public class ProductoGetDTO {
     private Integer unidades;
     private String descripcion;
     private Double precio;
-    private String cedulaVendedor;
+    private Integer cedulaVendedor;
     private List<String> rutasImagenes;
     private List<Integer> codigosCatergorias;
 

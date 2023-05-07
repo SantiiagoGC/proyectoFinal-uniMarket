@@ -33,7 +33,7 @@ public class ProductoPostDTO
     private Integer unidades;
 
     @NotBlank
-    private String cedulaVendedor;
+    private Integer cedulaVendedor;
 
     private List<String> rutasImagenes;
 

@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto.modelo.dto;
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +13,9 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 public class UsuarioPostDTO {
 
-    @NotBlank
-    private String cedula;
+
+    @Positive
+    private Integer cedula;
 
     @NotBlank
     @Length(max = 20, message = "El UserName debe tener máximo 20 caracteres")
