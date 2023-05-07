@@ -1,21 +1,15 @@
 package co.edu.uniquindio.proyecto.modelo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-public class ProductoPostDTO
-{
+public class ProductoGetDTO {
 
     private String nombre;
+    private Integer unidades;
     private String descripcion;
     private Double precio;
-    private Integer unidades;
     private String cedulaVendedor;
     private List<String> rutasImagenes;
-    private List<Integer> codigosCategorias;
+    private List<Integer> codigosCatergorias;
 
 }
