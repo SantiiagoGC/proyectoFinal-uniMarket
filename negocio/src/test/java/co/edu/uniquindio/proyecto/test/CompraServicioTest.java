@@ -1,21 +1,8 @@
 package co.edu.uniquindio.proyecto.test;
 
 import co.edu.uniquindio.proyecto.NegocioApplication;
-import co.edu.uniquindio.proyecto.entidades.Compra;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
-import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
-import co.edu.uniquindio.proyecto.repositorios.CompraRepo;
-import co.edu.uniquindio.proyecto.servicios.CompraServicio;
-import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @SpringBootTest(classes = NegocioApplication.class)
 @Transactional

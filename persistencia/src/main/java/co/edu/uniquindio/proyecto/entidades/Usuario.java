@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -25,19 +26,19 @@ public class Usuario extends Persona implements Serializable {
     private  String telefono;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios = new ArrayList<>();
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "vendedor")
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Producto> productosVenta = new ArrayList<>();
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Compra> productoCompras = new ArrayList<>();
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Favorito>  productosFavoritos = new ArrayList<>();
 
     public Usuario(Integer cedula, String nombreUsuario, String fotoPefil, String nombre, String email, String password, String direccion, String telefono) {

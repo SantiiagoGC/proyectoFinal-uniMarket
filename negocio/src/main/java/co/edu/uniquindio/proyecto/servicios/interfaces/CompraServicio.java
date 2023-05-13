@@ -1,6 +1,7 @@
-package co.edu.uniquindio.proyecto.servicios;
+package co.edu.uniquindio.proyecto.servicios.interfaces;
 
 import co.edu.uniquindio.proyecto.entidades.Compra;
+import co.edu.uniquindio.proyecto.modelo.dto.CompraPostDTO;
 
 import java.util.List;
 
@@ -8,7 +9,10 @@ public interface CompraServicio {
 
     List<Compra> listarComprasUsuario (String cedula);
 
-    Compra crearCompra(Compra c) throws Exception;
+    /*
+    Implementado creo
+     */
+    Compra crearCompra(Integer unidades, Integer codigoProducto, CompraPostDTO compraPostDTO) throws Exception;
 
     Compra actualizarCompra(Compra c) throws Exception;
 

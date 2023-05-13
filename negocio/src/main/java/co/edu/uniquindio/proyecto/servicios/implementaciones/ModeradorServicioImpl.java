@@ -1,13 +1,15 @@
-package co.edu.uniquindio.proyecto.servicios;
+package co.edu.uniquindio.proyecto.servicios.implementaciones;
 
-import co.edu.uniquindio.proyecto.entidades.Estado;
-import co.edu.uniquindio.proyecto.entidades.Moderador;
-import co.edu.uniquindio.proyecto.entidades.ProductoModerador;
+import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.modelo.dto.AdminPostDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.EmailDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
 import co.edu.uniquindio.proyecto.repositorios.ModeradorRepo;
 import co.edu.uniquindio.proyecto.repositorios.ProductoModeradorRepo;
+import co.edu.uniquindio.proyecto.servicios.interfaces.ModeradorServicio;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import co.edu.uniquindio.proyecto.entidades.Producto;
+
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 
 import java.util.Optional;
@@ -32,6 +34,51 @@ public class ModeradorServicioImpl implements ModeradorServicio {
 
         return moderadorRepo.findByEmailAndPassword(email, password)
                 .orElseThrow( () -> new Exception("Los datos de autenticación son incorrectos") );
+    }
+
+    @Override
+    public Integer registrarAdmin(AdminPostDTO adminPostDTO) throws Exception {
+
+        Optional<Moderador> buscado = moderadorRepo.findById(adminPostDTO.getCedula());
+
+        if( buscado.isPresent() ){
+            throw new Exception("El codigo del moderador ya existe");
+        }
+
+        buscado = buscarPorEmail(adminPostDTO.getEmail());
+        if( buscado.isPresent() ){
+            throw new Exception("El email del moderador ya existe");
+        }
+
+        buscado = moderadorRepo.findByNombreUsuario(adminPostDTO.getNombreUsuario());
+        if( buscado.isPresent() ){
+            throw new Exception("El username ya esta en uso");
+        }
+
+        Moderador moderador = new Moderador();
+        moderador.setEmail( adminPostDTO.getEmail() );
+        moderador.setCedula( adminPostDTO.getCedula() );
+        moderador.setPassword( adminPostDTO.getPassword() );
+        moderador.setNombre( adminPostDTO.getNombre() );
+        moderador.setFotoPerfil( adminPostDTO.getFotoPerfil() );
+        moderador.setNombreUsuario( adminPostDTO.getNombreUsuario() );
+
+        Moderador guardado = moderadorRepo.save(moderador);
+
+        //emailServicio.enviarEmail(new EmailDTO("Cuenta creada", "Cuenta abierta en UniMarket.", usuario.getEmail()));
+
+        return guardado.getCedula();
+    }
+
+    private Optional<Moderador> buscarPorEmail(String email) {
+        return moderadorRepo.findByEmail(email);
+    }
+
+    /*
+    Convertir de adentro hacia afuera
+     */
+    private AdminPostDTO convertir(Moderador moderador){
+        return null;
     }
 
     @Override

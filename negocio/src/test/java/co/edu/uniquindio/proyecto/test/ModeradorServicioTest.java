@@ -2,22 +2,8 @@ package co.edu.uniquindio.proyecto.test;
 
 import co.edu.uniquindio.proyecto.NegocioApplication;
 
-import co.edu.uniquindio.proyecto.entidades.Estado;
-import co.edu.uniquindio.proyecto.entidades.Moderador;
-import co.edu.uniquindio.proyecto.entidades.ProductoModerador;
-import co.edu.uniquindio.proyecto.repositorios.EstadoRepo;
-import co.edu.uniquindio.proyecto.entidades.Producto;
-import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
-import co.edu.uniquindio.proyecto.servicios.ModeradorServicio;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
-
-import java.util.List;
-import java.util.Optional;
 
 @SpringBootTest(classes = NegocioApplication.class)
 @Transactional

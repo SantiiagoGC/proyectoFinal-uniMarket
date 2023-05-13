@@ -36,16 +36,8 @@ public class Compra implements Serializable {
     @ManyToOne
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "compra")
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<DetalleCompra> compra = new ArrayList<>();
-
-    public Compra(Integer id, LocalDate fecha_creacion, Double valor_total, String metodoPago, Usuario usuario) {
-        this.id = id;
-        this.fechaCreacion = fecha_creacion;
-        this.valorTotal = valor_total;
-        this.metodoPago = metodoPago;
-        this.usuario = usuario;
-    }
 
 }

@@ -34,12 +34,4 @@ public class DetalleCompra implements Serializable {
     @JoinColumn(nullable = false)
     private Producto producto;
 
-    public DetalleCompra(Integer id, Integer unidades, Double precioProducto, Compra compra, Producto producto) {
-        this.id = id;
-        this.unidades = unidades;
-        this.precioProducto = precioProducto;
-        this.compra = compra;
-        this.producto = producto;
-    }
-
 }

@@ -1,9 +1,10 @@
-package co.edu.uniquindio.proyecto.servicios;
+package co.edu.uniquindio.proyecto.servicios.implementaciones;
 
 import co.edu.uniquindio.proyecto.modelo.dto.SesionDTO;
 import co.edu.uniquindio.proyecto.modelo.dto.TokenDTO;
 import co.edu.uniquindio.proyecto.seguridad.modelo.UserDetailsImpl;
 import co.edu.uniquindio.proyecto.seguridad.servicios.JwtService;
+import co.edu.uniquindio.proyecto.servicios.interfaces.SesionServicio;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

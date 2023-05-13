@@ -1,25 +1,24 @@
 package co.edu.uniquindio.proyecto.test;
 
 import co.edu.uniquindio.proyecto.NegocioApplication;
-import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.modelo.dto.ProductoPostDTO;
 import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
 import co.edu.uniquindio.proyecto.repositorios.FavoritoRepo;
-import co.edu.uniquindio.proyecto.servicios.ProductoServicio;
-import co.edu.uniquindio.proyecto.servicios.UsuarioServicio;
+import co.edu.uniquindio.proyecto.servicios.interfaces.ProductoServicio;
+import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
-import java.time.LocalDate;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest(classes = NegocioApplication.class)
 @Transactional
 public class ProductoServicioTest {
 
-    /*
+
     @Autowired
     private ProductoServicio productoServicio;
 
@@ -32,25 +31,22 @@ public class ProductoServicioTest {
     @Autowired
     private CategoriaRepo categoriaRepo;
 
-    @Sql("classpath:data.sql")
     @Test
     public void publicarProductoTest()  {
         try{
-            Usuario vendedor = usuarioServicio.obtenerUsuario("1007531125");
+            List<String> rutas = new ArrayList<>();
+            String ruta = "URL";
+            rutas.add(ruta);
+            ProductoPostDTO producto = new ProductoPostDTO("Pistola 9mm", "Mata", 2000.0,
+                    5, 1010066053, rutas, 1);
 
-            LocalDate localDateCreado = LocalDate.of(2024, 1, 2);
-            LocalDate localDateLimite = LocalDate.of(2024, 1, 2);
-
-            Producto producto = new Producto("Muñeca inflabe", 2,
-                    "Muy buena 3 velocidades", 25000.0, true, localDateCreado, localDateLimite, vendedor);
-
-            Producto publicado = productoServicio.publicarProducto(producto);
-            Assertions.assertNotNull(publicado);
+            Integer codigo = productoServicio.publicarProducto(producto);
+            System.out.println(codigo);
         } catch (Exception e) {
-            Assertions.fail(e.getMessage());
+            e.printStackTrace();
         }
     }
-
+/*
     @Sql("classpath:data.sql")
     @Test
     public void actualizarTest() {

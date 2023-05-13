@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,6 +23,9 @@ public class Categoria implements Serializable
     @Column(nullable = false , length = 100)
     private String nombre;
 
-    @ManyToOne
-    private Producto productoCategorias;
+    @OneToMany(mappedBy = "categoria")
+    @ToString.Exclude
+    private List<Producto> productos = new ArrayList<>();
+
+
 }

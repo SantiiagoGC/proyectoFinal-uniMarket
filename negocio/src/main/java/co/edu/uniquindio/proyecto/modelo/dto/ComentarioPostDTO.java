@@ -15,7 +15,7 @@ public class ComentarioPostDTO {
     @Length(max = 230, message = "El comentario debe tener maximo 230 caracteres")
     private String mensaje;
     @NotBlank
-    private String cedulaUsuario;
+    private Integer cedulaUsuario;
     @NotBlank
     private Integer idProducto;
 

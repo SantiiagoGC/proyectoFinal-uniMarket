@@ -1,7 +1,7 @@
-package co.edu.uniquindio.proyecto.servicios;
+package co.edu.uniquindio.proyecto.servicios.interfaces;
 
-import co.edu.uniquindio.proyecto.entidades.Favorito;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.modelo.dto.ProductoGetDTO;
 import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
 import co.edu.uniquindio.proyecto.modelo.dto.UsuarioPostDTO;
 
@@ -17,7 +17,7 @@ public interface UsuarioServicio {
 
     List<UsuarioGetDTO> listarUsuarios();
 
-    List<Favorito> listaFavoritos(String email) throws Exception;
+    List<ProductoGetDTO> listaFavoritos(String email) throws Exception;
 
     UsuarioGetDTO obtenerUsuario (Integer codigo) throws Exception;
 

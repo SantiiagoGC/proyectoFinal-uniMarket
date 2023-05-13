@@ -21,7 +21,6 @@ public class Producto implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -58,7 +57,7 @@ public class Producto implements Serializable {
     @JoinColumn(nullable = false)
     private Usuario vendedor;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<Comentario> comentariosProducto = new ArrayList<>();
 
@@ -66,40 +65,20 @@ public class Producto implements Serializable {
     @ToString.Exclude
     private List<DetalleCompra> detalleComprasProducto = new ArrayList<>();
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<Imagen> imagenesProducto = new ArrayList<>();
 
-    @OneToMany(mappedBy = "productoCategorias")
-    @ToString.Exclude
-    private List<Categoria> categoriaProducto = new ArrayList<>();
-
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<Favorito> favoritoProducto = new ArrayList<>();
 
-    @OneToMany(mappedBy = "productoModerador")
+    @OneToMany(mappedBy = "productoModerador", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<ProductoModerador> moderadorProducto = new ArrayList<>();
 
-    public Producto(String nombre, Integer unidades, String descripcion, Double precio, boolean activo, LocalDate fechaCreado, LocalDate fechaLimite, Usuario vendedor) {
-        this.nombre = nombre;
-        this.unidades = unidades;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.activo = activo;
-        this.fechaCreado = fechaCreado;
-        this.fechaLimite = fechaLimite;
-        this.vendedor = vendedor;
-    }
-
-    public Producto(String nombre, Integer unidades, String descripcion, Double precio, boolean activo, Usuario vendedor) {
-        this.nombre = nombre;
-        this.unidades = unidades;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.activo = activo;
-        this.vendedor = vendedor;
-    }
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Categoria categoria;
 
 }

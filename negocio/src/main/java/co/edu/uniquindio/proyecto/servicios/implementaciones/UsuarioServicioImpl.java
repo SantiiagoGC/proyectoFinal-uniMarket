@@ -1,10 +1,12 @@
-package co.edu.uniquindio.proyecto.servicios;
+package co.edu.uniquindio.proyecto.servicios.implementaciones;
 
-import co.edu.uniquindio.proyecto.entidades.Favorito;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.modelo.dto.EmailDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.ProductoGetDTO;
 import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
 import co.edu.uniquindio.proyecto.modelo.dto.UsuarioPostDTO;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
+import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     public UsuarioServicioImpl(UsuarioRepo usuarioRepo, PasswordEncoder passwordEncoder, EmailServicioImpl emailServicio) {
         this.usuarioRepo = usuarioRepo;
         this.passwordEncoder = passwordEncoder;
+        //this.emailServicio = emailServicio;
         this.emailServicio = emailServicio;
     }
 
@@ -60,12 +63,12 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setTelefono( u.getTelefono() );
 
         Usuario guardado = usuarioRepo.save(usuario);
-        //emailServicio.enviarEmail(new EmailDTO("Cuenta creada", "Felicidades Crack", usuario.getEmail()));
+        emailServicio.enviarEmail(new EmailDTO("Cuenta creada", "Cuenta abierta en UniMarket.", usuario.getEmail()));
 
         return guardado.getCedula();
     }
 
-    /*@Override
+    /*
     public String actualizarUsuario(String cedula, UsuarioGetDTO u) throws Exception {
         Optional<Usuario> buscado = usuarioRepo.findById(cedula);
         if ( buscado.isEmpty() ){
@@ -131,20 +134,75 @@ public class UsuarioServicioImpl implements UsuarioServicio {
      */
     @Override
     public List<UsuarioGetDTO> listarUsuarios() {
+
         return convertirLista( usuarioRepo.findAll() );
     }
 
     @Override
-    public List<Favorito> listaFavoritos(String email) throws Exception {
+    public List<ProductoGetDTO> listaFavoritos(String email) throws Exception {
 
         Optional<Usuario>  buscado = buscarPorEmail(email);
+
         if ( buscado.isEmpty() ){
-            throw new Exception("El correo no existe");
+            throw new Exception("No se encontro ningun usuario");
+        } else{
+            List<Favorito> favoritos = buscado.get().getProductosFavoritos();
+            return convertirListaFavoritos(favoritos);
+        }
+    }
+
+    /*
+    Convertir listas de productos a DTO para presentacion en front
+    */
+    private List<ProductoGetDTO> convertirListaFavoritos(List<Favorito> lista){
+        List<ProductoGetDTO> respuesta = new ArrayList<>();
+        for(Favorito f : lista){
+            respuesta.add( convertirFavortios(f) );
+        }
+        return respuesta;
+    }
+
+    /*
+    Convertir de adentro hacia afuera
+    */
+    private  ProductoGetDTO convertirFavortios(Favorito favorito){
+        return new ProductoGetDTO(
+                favorito.getProducto().getNombre(),
+                favorito.getProducto().getUnidades(),
+                favorito.getProducto().getDescripcion(),
+                favorito.getProducto().getPrecio(),
+                favorito.getProducto().getVendedor().getCedula(),
+                rutasImagenesFavoritos(favorito.getProducto().getImagenesProducto()),
+                favorito.getProducto().getCategoria().getCodigo());
+    }
+
+    /*
+   Tranformas rutas en solo strings para el front
+    */
+    public List<String> rutasImagenesFavoritos(List<Imagen> rutas){
+        List<String> respues = new ArrayList<>();
+
+        for (Imagen ruta : rutas) {
+            String url = ruta.getRuta();
+            respues.add(url);
+        }
+        return respues;
+    }
+
+    /*
+    Convertir categorias para el front
+     */
+    /*
+    public List<Integer> categoriasIDFavoritos(List<Categoria> categorias){
+        List<Integer> respues = new ArrayList<>();
+
+        for (Categoria categoria : categorias) {
+            int codigoC = categoria.getCodigo();
+            respues.add(codigoC);
         }
 
-        return usuarioRepo.obtenerProductosFavoritos(email);
-
-    }
+        return  respues;
+    }*/
 
     /*
     Consultar con DTO implementado

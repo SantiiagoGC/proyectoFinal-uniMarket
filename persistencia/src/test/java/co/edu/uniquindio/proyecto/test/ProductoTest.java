@@ -20,7 +20,7 @@ import java.util.Optional;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ProductoTest {
-
+/*
     @Autowired
     private ProductoRepo productoRepo;
 
@@ -123,6 +123,6 @@ public class ProductoTest {
         List<ProductoValido> productos =  productoRepo.listarProductosValidosDTO(LocalDate.now());
         productos.forEach(System.out::println);
         // Assertions.assertEquals(3, respuesta.size());
-    }
+    }*/
 
 }

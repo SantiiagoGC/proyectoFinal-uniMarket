@@ -1,6 +1,4 @@
 package co.edu.uniquindio.proyecto.modelo.dto;
-
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -12,7 +10,6 @@ import org.hibernate.validator.constraints.Length;
 @Getter
 @Setter
 public class UsuarioPostDTO {
-
 
     @Positive
     private Integer cedula;

@@ -3,7 +3,6 @@ package co.edu.uniquindio.proyecto.modelo.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -24,19 +23,16 @@ public class ProductoPostDTO
     @Length(max = 150, message = "La descripcion debe tener maximo 150 caracteres")
     private String descripcion;
 
-    @NotBlank
     @Positive
     private Double precio;
 
-    @NotBlank
     @Positive
     private Integer unidades;
 
-    @NotBlank
     private Integer cedulaVendedor;
 
     private List<String> rutasImagenes;
 
-    private List<Integer> codigosCategorias;
+    private Integer codigoCategoria;
 
 }

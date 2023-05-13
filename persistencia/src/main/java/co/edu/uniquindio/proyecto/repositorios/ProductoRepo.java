@@ -16,6 +16,8 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
 
     Optional<Producto> findByNombreContains(String nombre);
 
+    List<Producto> findByActivo(boolean estado);
+
     @Query("select p.vendedor.nombre from Producto p where p.id = :id")
     String obtenerNombreVendedor(Integer id);
 
@@ -45,4 +47,7 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
 
     @Query("select p.fechaLimite from Producto p where p.id = :id")
     LocalDate obtenerFechaLimite(Integer id);
+
+    @Query("select p from Producto p where p.precio between :minPrice and :maxPrice and p.activo = true ")
+    List<Producto> listarPorPrecio(double minPrice, double maxPrice);
 }
