@@ -6,4 +6,6 @@ import co.edu.uniquindio.proyecto.modelo.dto.TokenDTO;
 public interface SesionServicio {
 
     TokenDTO login(SesionDTO sesionDTO);
+
+
 }

@@ -34,7 +34,6 @@ public class UsuarioPostDTO {
     @Length(max = 100, message = "La dirección debe tener máximo 100 caracteres")
     private String direccion;
 
-    @NotBlank
     private String fotoPerfil;
 
     @NotBlank

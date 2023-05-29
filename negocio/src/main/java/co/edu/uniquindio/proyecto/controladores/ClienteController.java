@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/clientes")
 @SecurityRequirement(name = "bearerAuth")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteController {
 
     @Autowired

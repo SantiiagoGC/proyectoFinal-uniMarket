@@ -63,7 +63,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setTelefono( u.getTelefono() );
 
         Usuario guardado = usuarioRepo.save(usuario);
-        emailServicio.enviarEmail(new EmailDTO("Cuenta creada", "Cuenta abierta en UniMarket.", usuario.getEmail()));
+        //emailServicio.enviarEmail(new EmailDTO("Cuenta creada", "Cuenta abierta en UniMarket.", usuario.getEmail()));
 
         return guardado.getCedula();
     }

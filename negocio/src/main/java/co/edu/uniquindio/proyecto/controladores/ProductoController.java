@@ -17,8 +17,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/productos")
-@SecurityRequirement(name = "bearerAuth")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductoController {
 
     private final ProductoServicio productoServicio;
@@ -90,6 +90,11 @@ public class ProductoController {
     @GetMapping("/obtener_productos_precio/{minPrice}/{maxPrice}")
     public ResponseEntity<MensajeDTO> listarProductosPorPrecio(@PathVariable double minPrice,@PathVariable double maxPrice){
         return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosPorRangoPrecio(minPrice, maxPrice)));
+    }
+
+    @GetMapping("/obtener_productos")
+    public ResponseEntity<MensajeDTO> listAllProducts() throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProducto()));
     }
 
 }
