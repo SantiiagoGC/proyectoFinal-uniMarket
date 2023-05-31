@@ -15,6 +15,6 @@ public class ProductoGetDTO {
     private Double precio;
     private Integer cedulaVendedor;
     private List<String> rutasImagenes;
-    private Integer codigoCatergoria;
+    private Integer idCategoria;
 
 }

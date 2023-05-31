@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.controladores.excepciones;
+package co.edu.uniquindio.proyecto.controladores;
 
 import co.edu.uniquindio.proyecto.modelo.dto.ComentarioPostDTO;
 import co.edu.uniquindio.proyecto.modelo.dto.MensajeDTO;

@@ -11,8 +11,13 @@ import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
-public class UserDetailsImpl implements UserDetails {private String username, password;
+public class UserDetailsImpl implements UserDetails {
+
+    private String username, password;
     private Collection<? extends GrantedAuthority> authorities;
+    private Integer id;
+    private String name;
+
     public static UserDetailsImpl build(Persona user){
         List<GrantedAuthority> authorities = new ArrayList<>();
         if(user instanceof Usuario){
@@ -20,8 +25,9 @@ public class UserDetailsImpl implements UserDetails {private String username, pa
         }else if(user instanceof Moderador){
             authorities.add( new SimpleGrantedAuthority("MODERADOR") );
         }
-        return new UserDetailsImpl(user.getEmail(), user.getPassword(), authorities);
+        return new UserDetailsImpl(user.getEmail(), user.getPassword(), authorities, user.getCedula(), user.getNombre());
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
@@ -49,6 +55,22 @@ public class UserDetailsImpl implements UserDetails {private String username, pa
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
 

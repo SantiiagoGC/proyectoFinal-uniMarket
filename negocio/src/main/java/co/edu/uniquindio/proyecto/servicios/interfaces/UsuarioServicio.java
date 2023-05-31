@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios.interfaces;
 
 import co.edu.uniquindio.proyecto.entidades.Usuario;
-import co.edu.uniquindio.proyecto.modelo.dto.ProductoGetDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.UsuarioPostDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.*;
 
 import java.util.List;
 
@@ -21,6 +19,8 @@ public interface UsuarioServicio {
 
     UsuarioGetDTO obtenerUsuario (Integer codigo) throws Exception;
 
-    Usuario iniciarSesion(String email, String password) throws Exception;
+    TokenDTO iniciarSesion(SesionDTO sesionDTO);
+
+    TokenDTO refreshToken(TokenDTO tokenDTO) throws Exception;
 
 }

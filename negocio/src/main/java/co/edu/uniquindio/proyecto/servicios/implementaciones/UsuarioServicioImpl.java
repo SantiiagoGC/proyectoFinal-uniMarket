@@ -1,12 +1,17 @@
 package co.edu.uniquindio.proyecto.servicios.implementaciones;
 
 import co.edu.uniquindio.proyecto.entidades.*;
-import co.edu.uniquindio.proyecto.modelo.dto.EmailDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.ProductoGetDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.UsuarioGetDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.UsuarioPostDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.*;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
+import co.edu.uniquindio.proyecto.seguridad.modelo.UserDetailsImpl;
+import co.edu.uniquindio.proyecto.seguridad.servicios.JwtService;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +27,14 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     private final PasswordEncoder passwordEncoder;
 
     private final EmailServicioImpl emailServicio;
+
+    @Autowired
+    private JwtService jwtService;
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     public UsuarioServicioImpl(UsuarioRepo usuarioRepo, PasswordEncoder passwordEncoder, EmailServicioImpl emailServicio) {
         this.usuarioRepo = usuarioRepo;
@@ -234,9 +247,23 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     No necesita DTO
      */
     @Override
-    public Usuario iniciarSesion(String email, String password) throws Exception {
-        return usuarioRepo.findByEmailAndPassword(email, password)
-                .orElseThrow( () -> new Exception("Los datos de autenticación son incorrectos") );
+    public TokenDTO iniciarSesion(SesionDTO sesionDTO) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(sesionDTO.getEmail(), sesionDTO.getPassword()));
+        UserDetails user = (UserDetailsImpl) authentication.getPrincipal();
+        String jwtToken = jwtService.generateToken(user);
+        String refreshToken = jwtService.generateRefreshToken(user);
+        return new TokenDTO(jwtToken, refreshToken);
+    }
+
+    @Override
+    public TokenDTO refreshToken(TokenDTO tokenDTO) throws Exception {
+        String email = jwtService.extractUsername(tokenDTO.getRefreshToken());
+        UserDetailsImpl user = (UserDetailsImpl) userDetailsService.loadUserByUsername(email);
+        if (jwtService.isTokenValid(tokenDTO.getRefreshToken(), user)) {
+            String token = jwtService.generateToken(user);
+            return new TokenDTO(token, tokenDTO.getRefreshToken());
+        }
+        throw new Exception("Error construyendo el token");
     }
 
     /*

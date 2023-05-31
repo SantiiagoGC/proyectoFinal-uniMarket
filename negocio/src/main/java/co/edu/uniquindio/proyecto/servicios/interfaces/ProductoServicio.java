@@ -20,7 +20,7 @@ public interface ProductoServicio {
 
     void actualizarProducto(Integer codigo, ProductoPostDTO producto) throws Exception;
 
-    Producto obtenerProducto(Integer codigoProducto) throws ProductoNoEncontradoException;
+    ProductoGetDTO obtenerProducto(Integer codigoProducto) throws ProductoNoEncontradoException;
 
     String obtenerDescripcionProducto(Integer codigoProducto) throws ProductoNoEncontradoException;
 

@@ -26,7 +26,16 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests().requestMatchers( "/doc/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll();
         http.csrf().disable();
         http.cors();
-        http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated();
+        http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll();
+        http.authorizeHttpRequests().requestMatchers(
+                "/api/productos/obtener/**",
+                "/api/productos/obtener_productos",
+                "/api/productos/obtener_productos_categoria/**",
+                "/api/productos/obtener_productos_precio/**",
+                "/api/productos/obtener_productos_titulo/**",
+                "/api/categorias/obtener"
+                ,"/api/categorias/obtener/**"
+        ).permitAll().anyRequest().authenticated();
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authenticationProvider(authenticationProvider);

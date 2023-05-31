@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
-@SecurityRequirement(name = "bearerAuth")
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
@@ -24,9 +23,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<MensajeDTO> login(@Valid @RequestBody SesionDTO loginUser) {
-        TokenDTO jwtTokenDto = sesionServicio.login(loginUser);
         return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,
-                jwtTokenDto) );
+                sesionServicio.login(loginUser)) );
     }
 
     @PostMapping("/registro")

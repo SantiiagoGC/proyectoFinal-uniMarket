@@ -131,8 +131,9 @@ public class ProductoServicioImpl implements ProductoServicio {
     Metodo para obtener un producto correcto
      */
     @Override
-    public Producto obtenerProducto(Integer codigoProducto) throws ProductoNoEncontradoException {
-        return productoRepo.findById(codigoProducto).orElseThrow( () -> new ProductoNoEncontradoException("El codigo del producto no es válido") );
+    public ProductoGetDTO obtenerProducto(Integer codigoProducto) throws ProductoNoEncontradoException {
+        return convertir(productoRepo.findById(codigoProducto).orElseThrow( () -> new ProductoNoEncontradoException(
+                "El codigo del producto no es válido")));
     }
 
     /*
