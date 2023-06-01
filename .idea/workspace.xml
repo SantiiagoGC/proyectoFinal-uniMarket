@@ -4,23 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Servicios FULL, refinar los controladores. Seguir con el FRONT.">
-      <change afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/CategoryController.java" afterDir="false" />
+    <list default="true" id="12efd63b-130f-46cb-b7e6-06b4441c059d" name="Changes" comment="Servicios FULL, seguir refinando segun sea necesario los controladores. Seguir con el FRONT.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ClienteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/excepciones/CategoriaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/CategoriaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/excepciones/ComentarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ComentarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/modelo/dto/ProductoGetDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/modelo/dto/ProductoGetDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/modelo/dto/TokenDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/modelo/dto/TokenDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/controladores/ProductoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/modelo/dto/CompraPostDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/modelo/dto/CompraPostDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/seguridad/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/seguridad/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/seguridad/modelo/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/seguridad/modelo/UserDetailsImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/CompraServicioImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/CompraServicioImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/ProductoServicioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/ProductoServicioImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/SesionServicioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/SesionServicioImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/UsuarioServicioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/implementaciones/UsuarioServicioImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/interfaces/ProductoServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/interfaces/ProductoServicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/interfaces/SesionServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/interfaces/SesionServicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/interfaces/UsuarioServicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/negocio/src/main/java/co/edu/uniquindio/proyecto/servicios/interfaces/UsuarioServicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/ProductoRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/persistencia/src/main/java/co/edu/uniquindio/proyecto/repositorios/ProductoRepo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,6 +240,7 @@
       <workItem from="1685490326630" duration="4437000" />
       <workItem from="1685506466933" duration="1403000" />
       <workItem from="1685510038454" duration="8252000" />
+      <workItem from="1685557600022" duration="17545000" />
     </task>
     <task id="LOCAL-00001" summary="Todas las clases creadas y relaciones, version 0.2">
       <created>1678774454161</created>
@@ -365,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685322232800</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Servicios FULL, seguir refinando segun sea necesario los controladores. Seguir con el FRONT.">
+      <created>1685557740722</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1685557740722</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +400,8 @@
     <MESSAGE value="Anotaciones en los GET y Post Falta implementarlos..." />
     <MESSAGE value="Todos sirve en Postman menos el actualizar que raro..." />
     <MESSAGE value="Servicios FULL, refinar los controladores. Seguir con el FRONT." />
-    <option name="LAST_COMMIT_MESSAGE" value="Servicios FULL, refinar los controladores. Seguir con el FRONT." />
+    <MESSAGE value="Servicios FULL, seguir refinando segun sea necesario los controladores. Seguir con el FRONT." />
+    <option name="LAST_COMMIT_MESSAGE" value="Servicios FULL, seguir refinando segun sea necesario los controladores. Seguir con el FRONT." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

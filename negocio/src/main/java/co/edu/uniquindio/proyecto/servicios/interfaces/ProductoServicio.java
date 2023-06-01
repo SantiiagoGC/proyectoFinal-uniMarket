@@ -29,6 +29,8 @@ public interface ProductoServicio {
 
     List<ProductoGetDTO> listarProductosPersona (Integer cedula);
 
+    List<ProductoGetDTO> listProductByTitle(String title);
+
     List<ProductoGetDTO> listarProductosFavoritos (Integer cedula);
 
     //Integer comentarProducto(ComentarioPostDTO comentario) throws Exception;

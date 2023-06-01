@@ -242,6 +242,27 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         );
     }
 
+    @Override
+    public UsuarioGetDTO obtenerUsuarioEmail(String email) throws Exception {
+        Optional<Usuario> buscado = usuarioRepo.findByEmail(email);
+
+        if( buscado.isEmpty() ){
+            throw new Exception("El usuario NO existe");
+        }
+
+        Usuario aux = buscado.get();
+
+        return new UsuarioGetDTO(
+                aux.getCedula(),
+                aux.getNombre(),
+                aux.getNombreUsuario(),
+                aux.getEmail(),
+                aux.getDireccion(),
+                aux.getTelefono(),
+                aux.getFotoPerfil()
+        );
+    }
+
 
     /*
     No necesita DTO

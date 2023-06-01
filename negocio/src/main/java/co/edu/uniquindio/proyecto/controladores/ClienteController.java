@@ -29,10 +29,16 @@ public class ClienteController {
     }
 
     @Operation(summary = "Obtener Usuario", description = "Se consulta el usuario dado su código (cedula)")
-    @GetMapping("/obtener/{cedula}")
+    @GetMapping("/{cedula}")
     public ResponseEntity<MensajeDTO> obtenerUsuario(@PathVariable int cedula) throws Exception{
         return ResponseEntity.status(200).body( new MensajeDTO(HttpStatus.OK, false,
                 usuarioServicio.obtenerUsuario(cedula)));
+    }
+
+    @GetMapping("buscar/{email}")
+    public ResponseEntity<MensajeDTO> obtenerUsuario(@PathVariable String email) throws Exception{
+        return ResponseEntity.status(200).body( new MensajeDTO(HttpStatus.OK, false,
+                usuarioServicio.obtenerUsuarioEmail(email)));
     }
 
     @Operation(summary = "Eliminar Usuario", description = "Se elimina el usuario dado su código (cedula)")

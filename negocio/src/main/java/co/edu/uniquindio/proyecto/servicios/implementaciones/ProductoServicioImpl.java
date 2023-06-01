@@ -174,6 +174,16 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
+    public List<ProductoGetDTO> listProductByTitle(String title) {
+
+        List<Producto> productsByTitle = productoRepo.listProductByTitle(title);
+
+        List<ProductoGetDTO> lista = convertirLista(productsByTitle);
+
+        return lista;
+    }
+
+    @Override
     public List<ProductoGetDTO> listarProductosFavoritos(Integer cedula) {
 
         Optional<Usuario> persona = usuarioRepo.findById(cedula);

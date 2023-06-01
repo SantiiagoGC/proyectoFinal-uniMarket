@@ -25,5 +25,4 @@ public class CompraPostDTO {
     @NotNull
     private Integer cedulaUsuario;
 
-    private List<Integer> idsDetalleCompra;
 }

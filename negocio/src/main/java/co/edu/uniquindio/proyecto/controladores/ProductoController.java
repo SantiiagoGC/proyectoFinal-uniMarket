@@ -1,9 +1,8 @@
 package co.edu.uniquindio.proyecto.controladores;
 
-import co.edu.uniquindio.proyecto.modelo.dto.FavoritoPostDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.MensajeDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.ProductoGetDTO;
-import co.edu.uniquindio.proyecto.modelo.dto.ProductoPostDTO;
+import co.edu.uniquindio.proyecto.modelo.dto.*;
+import co.edu.uniquindio.proyecto.servicios.interfaces.ComentarioServicio;
+import co.edu.uniquindio.proyecto.servicios.interfaces.CompraServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.ProductoServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -22,6 +21,7 @@ import java.util.List;
 public class ProductoController {
 
     private final ProductoServicio productoServicio;
+    private final CompraServicio compraServicio;
 
     @Operation(summary = "Registrar producto", description = "Publicar producto dado los datos del mismo.")
     @PostMapping("/crear")
@@ -95,6 +95,17 @@ public class ProductoController {
     @GetMapping("/obtener_productos")
     public ResponseEntity<MensajeDTO> listAllProducts() throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProducto()));
+    }
+
+    @PostMapping("/compra/{unidades}/{codigoProducto}")
+    public ResponseEntity<MensajeDTO> comprarProducto(@PathVariable int unidades, @PathVariable int codigoProducto, @Valid @RequestBody CompraPostDTO compraPostDTO) throws Exception{
+        compraServicio.crearCompra(unidades, codigoProducto,compraPostDTO);
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,"Producto comprado correctamente"));
+    }
+
+    @GetMapping("/obtener_productos_titulo/{title}")
+    public ResponseEntity<MensajeDTO> listProductByTitle(@PathVariable String title){
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, productoServicio.listProductByTitle(title)));
     }
 
 }

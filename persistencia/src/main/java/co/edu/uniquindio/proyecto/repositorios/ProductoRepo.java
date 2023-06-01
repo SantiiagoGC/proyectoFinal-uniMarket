@@ -27,6 +27,9 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     @Query("select c from Comentario  c where c.producto.id = :id")
     List<Comentario> obtenerComentariosProducto2(Integer id);
 
+    @Query("select p from Producto p where p.nombre like concat('%', :title, '%') and p.activo = false ")
+    List<Producto> listProductByTitle(String title);
+
     @Query("select p.nombre, c from Producto p left join p.comentariosProducto c")
     List<Object[]> listarProductosYComentarios();
 

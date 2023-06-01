@@ -19,6 +19,8 @@ public interface UsuarioServicio {
 
     UsuarioGetDTO obtenerUsuario (Integer codigo) throws Exception;
 
+    UsuarioGetDTO obtenerUsuarioEmail (String email) throws Exception;
+
     TokenDTO iniciarSesion(SesionDTO sesionDTO);
 
     TokenDTO refreshToken(TokenDTO tokenDTO) throws Exception;

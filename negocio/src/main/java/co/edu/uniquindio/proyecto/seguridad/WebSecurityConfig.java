@@ -29,11 +29,14 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll();
         http.authorizeHttpRequests().requestMatchers(
                 "/api/productos/obtener/**",
+                "/api/productos/crear",
                 "/api/productos/obtener_productos",
                 "/api/productos/obtener_productos_categoria/**",
                 "/api/productos/obtener_productos_precio/**",
                 "/api/productos/obtener_productos_titulo/**",
-                "/api/categorias/obtener"
+                "/api/categorias/obtener",
+                "/api/productos/compra/**",
+                "/api/clientes/**"
                 ,"/api/categorias/obtener/**"
         ).permitAll().anyRequest().authenticated();
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);

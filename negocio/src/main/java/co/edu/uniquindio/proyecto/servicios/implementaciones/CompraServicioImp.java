@@ -62,7 +62,7 @@ public class CompraServicioImp implements CompraServicio {
 
         compra.setFechaCreacion(LocalDate.now());
         compra.setMetodoPago(compraPostDTO.getMetodoPago());
-        compra.setValorTotal(producto.get().getPrecio());
+        compra.setValorTotal(compraPostDTO.getValorTotal());
         compra.setUsuario(usuario.get());
 
         DetalleCompra detalleCompra = new DetalleCompra();
