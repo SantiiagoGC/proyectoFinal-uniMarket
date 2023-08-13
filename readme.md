@@ -4,3 +4,4 @@
 2. Persistencia hecha.
 3. Servicios hecha.
 4. Refinando controladores.
+5. Backend tienda web finalizado.
